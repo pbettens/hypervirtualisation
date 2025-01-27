@@ -1,0 +1,12 @@
+# ignore all, then uningnore
+*
+
+!README.md
+!4hyp1r_4hyp1r.md
+!.gitignore
+!package.json 
+!eleventy.config.js
+!assets/
+!assets/**
+!src/
+!src/**

@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies & build
         run: |
           npm install
-          npx @11ty/eleventy
+          npx @11ty/eleventy --pathprefix 'hypervirtualisation'
       - uses: actions/upload-pages-artifact@v2
 
   deploy:

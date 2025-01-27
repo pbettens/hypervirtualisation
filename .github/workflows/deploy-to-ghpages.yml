@@ -13,6 +13,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  ELEVENTY_NOTES_PATH_PREFIX: "hypervirtualisation"
+
 jobs:
 
   build:

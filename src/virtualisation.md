@@ -2,6 +2,7 @@
 title: Virtualisation
 order: 10
 tags: Cours
+icon: book
 ---
 
 ## Virtualisation
@@ -33,40 +34,42 @@ _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
 
 > Un **hyperviseur** est une plateforme de virtualisation. 
 
-1. Hyperviseur de **type 1** (natif)
+### Hyperviseur de **type 1** (natif)
 
-    Un **hyperviseur de Type 1**, **natif**, voire « **_bare metal_** » est un logiciel qui s'exécute directement sur une plateforme matérielle.
+Un **hyperviseur de Type 1**, **natif**, voire « **_bare metal_** » est un logiciel qui s'exécute directement sur une plateforme matérielle.
 
-    L'hyperviseur de type 1 est un noyau hôte allégé et optimisé. 
+L'hyperviseur de type 1 est un noyau hôte allégé et optimisé. 
 
-    Exemples : 
-    
-    - CP, développé par IBM (_obsolète_) 
-    - Xen (_obsolète_)
-    - Microsoft Hyper-V
-    - ESXI Server  (VMware)
-        - propriétaire
-        - support professionnel 
-    - KVM
-    - Proxmox (utilise KVM et LXC (_LinuX Container_))
-        - _open source_ basée sur Debian
+Exemples : 
 
-    ![Hyperviseur de type 1 (Source Wikipedia)](img/Diagramme_ArchiHyperviseur_type1.png)
+- CP, développé par IBM (_obsolète_) 
+- Xen (_obsolète_)
+- Microsoft Hyper-V
+- ESXI Server  (VMware)
+    - propriétaire
+    - support professionnel 
+- KVM
+- Proxmox (utilise KVM et LXC (_LinuX Container_))
+    - _open source_ basée sur Debian
 
-2. Hyperviseur de **type 2** (_hosted_)
+![Hyperviseur de type 1 (Source Wikipedia)](/assets/img/Diagramme_ArchiHyperviseur_type1.png)  
+_(Source : Wikipedia - Hyperviseur de type 1)_
 
-    Un **hyperviseur de type 2** est un logiciel qui s'exécute à l'intérieur d'un autre système d'exploitation. Un système d'exploitation invité s'exécutera donc en troisième niveau au-dessus du matériel. Les systèmes d'exploitation invités n'ayant pas conscience d'être virtualisés, ils n'ont pas besoin d'être adaptés. 
 
-    On peut parler d'**émulation**. 
-    
-    Exemples : 
-    
-    - VMware Workstation
-    - QEMU 
-    - Virtual PC
-    - VirtualBox d'Oracle
 
-    ![Hyperviseur de type 2 (Source Wikipedia)](img/Diagramme_ArchiEmulateur_type2.png)
+### Hyperviseur de **type 2** (_hosted_)
+
+Un **hyperviseur de type 2** est un logiciel qui s'exécute à l'intérieur d'un autre système d'exploitation. Un système d'exploitation invité s'exécutera donc en troisième niveau au-dessus du matériel. Les systèmes d'exploitation invités n'ayant pas conscience d'être virtualisés, ils n'ont pas besoin d'être adaptés. 
+On peut parler d'**émulation**. 
+
+Exemples : 
+
+- VMware Workstation
+- QEMU 
+- Virtual PC
+- VirtualBox d'Oracle
+![Hyperviseur de type 2 (Source Wikipedia)](/assets/img/Diagramme_ArchiEmulateur_type2.png)  
+_(Source : Wikipedia - Hyperviseur de type 2)_
 
 > Une **machine virtuelle** (VM _virtual machine_) est une machine physique simulée de manière logicielle. Une machine virtuelle exécute un OS (_operating system_) complet, isolé des autres. 
 
@@ -86,6 +89,12 @@ Couplé à [KVM][kvm], QEmu peut-être un hyperviseur — élément logiciel, 
 
 KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : gestionnaire de mémoire, ordonnanceur, pile d'entrées/sorties (E/S), pilotes de périphériques, gestionnaire de sécurité, pile réseau, etc. Chaque machine virtuelle est mise en œuvre comme un processus Linux standard.
 
+
+### Outils
+
+#### VMWare 
+
+VMWare fait partie de Broadcom
 
 
 

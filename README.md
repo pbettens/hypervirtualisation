@@ -1,5 +1,7 @@
 # 4HYP1r - Hypervirtualisation
 
+![](https://img.shields.io/badge/powered_by-hand-orange?style=for-the-badge) ![](https://img.shields.io/badge/with_♥-red?style=for-the-badge)
+
 _Hypervirtualisation ou virtualisation mais sûrement pas hypervision_
 
 [Organisation](organisation.md)

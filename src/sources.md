@@ -1,7 +1,7 @@
 ---
 title: Sources
-order: 40
-tags: Ressources
+order: 50
+tags: …
 ---
 
 # Sources 
@@ -17,6 +17,10 @@ tags: Ressources
 [LXC, linux container](https://linuxcontainers.org/) (_consulté le 7 jan. 2025_)
 
 [How to use the official nginx docker image](https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image) (_consulté le 7 jan. 2025_)
+
+[Proxmox, download page](https://www.proxmox.com/en/downloads) (_consulté le 27 jan. 2025_)
+
+[Le guide le plus décalé pour comprendre Kubernetes (part. 1)](https://stephane-beuret.medium.com/le-guide-le-plus-d%C3%A9cal%C3%A9-pour-comprendre-kubernetes-part-1-101126825d8b) (_consulté le 20 jan. 2025_)
 
 
 

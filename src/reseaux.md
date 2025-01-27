@@ -1,13 +1,13 @@
 ---
 title: Réseau
-order: 12
+order: 11
 tags: Cours
 icon: book
 ---
 
 ## Le réseau dans les hyperviseurs
 
-Dans un environnement virtualisé, les machines — dans ce cas, virtuelles — doivent communiquer : soit entre elles, soit avec l'hôte physique soit encore, avec le réseau externe. Le **connectivité** est virtuelle et doit être la plus **efficace** possible. Parfois, l'environnement nécessitera que les réseaux virtuels soient segmentés pour permettre une meilleure **isolation**.
+Dans un environnement virtualisé, les machines — dans ce cas, virtuelles — doivent communiquer : soit entre elles, soit avec l'hôte physique soit encore, avec le réseau externe. La **connectivité** est virtuelle et doit être la plus **efficace** possible. Parfois, l'environnement nécessitera que les réseaux virtuels soient segmentés pour permettre une meilleure **isolation**.
 
 Il existe deux techniques dont les détails diffèrent un peu en fonction de l'hyperviseur utilisé. 
 
@@ -31,7 +31,5 @@ Le NAT est plus fréquent dans les environnements de test et avec des hyperviseu
 
 
 ## TODO
-
-- peut-on configurer deux ponts (_bridge_) sur une même carte réseau. **non**
 
 - confirmation : je peux configurer un bridge et mettre certaines vm dans certains vlans. il suffit que mon hyperviseur soit connecté physiquement dans un trunk. 

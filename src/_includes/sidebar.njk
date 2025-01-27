@@ -1,5 +1,5 @@
 <div class="siteheader" role="banner">
-    <a href="/" class="h5-like">
+    <a href=""{{ '/' | url }}" class="h5-like">
         {{ meta.siteName }}
     </a>
 </div>
@@ -10,7 +10,7 @@
     <ul>
         {% for page in pages | sort(attribute="data.order") %}
         <li>
-            <a href="{{ page.url }}">
+            <a href="{{ '/' | url }}/{{ page.url }}">
                 {% if page.data.icon %}
                 <i class="fas fa-{{ page.data.icon }}"></i>
                 {% else %}

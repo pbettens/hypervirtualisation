@@ -10,3 +10,6 @@
 !assets/**
 !src/
 !src/**
+
+!.github
+!.github/**

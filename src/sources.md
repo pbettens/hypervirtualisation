@@ -22,6 +22,12 @@ tags: …
 
 [Le guide le plus décalé pour comprendre Kubernetes (part. 1)](https://stephane-beuret.medium.com/le-guide-le-plus-d%C3%A9cal%C3%A9-pour-comprendre-kubernetes-part-1-101126825d8b) (_consulté le 20 jan. 2025_)
 
+[Wikipedia - Gestion par volumes logiques](https://fr.wikipedia.org/wiki/Gestion_par_volumes_logiques) (_(re)consulté le 28 janv. 2025_)
+
+[Debian facile - LVM](https://debian-facile.org/doc:systeme:lvm) (_(re)consulté le 28 janv. 2025_)
+
+[LinuxFR - Gestion des volumes RAID avec LVM](https://linuxfr.org/news/gestion-de-volumes-raid-avec-lvm) (_(re)consulté le 28 janv. 2025_)
+
 
 
 

@@ -13,6 +13,8 @@ _Hypervirtualisation ou virtualisation mais sûrement pas hypervision <i class="
 [Organisation du cours](organisation.md)
 
 [Introduction à la virtualisation](virtualisation.md)  
+[Le réseau](reseaux.md)  
+[Le stockage](stockage.md)  
 [Introduction à la conteneurisation](conteneurisation.md)  
 
 [Ressources](ressources.md)  

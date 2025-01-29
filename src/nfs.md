@@ -2,70 +2,82 @@
 title: NFS
 order: 23
 tags: Ressources
+icon: dungeon
 ---
 
 ## NFS
 
+**NFS** (_Network Files System_) est un protocole de partage de fichiers sur le réseau. Initialement développé pour _*nix* par Sun Microsystems en 1984, NFS est également disponible pour MS Windows
 
-  - Utilise le protocole **TCP/UDP** sur le port 2049.
+NFS existe en plusieurs versions : 
 
+- version **1** et **2**, sont non sécurisées[^f1] et fonctionne sur `UDP`;
+- version **3** prend également en charge `TCP`;
+- version **4** `NFSv4` n'est plus rétrocompatible avec les anciennes versions.
 
-#### **2.2. Stockage NFS**
-- **Fonctionnement** :
-  - Partage de fichiers via le réseau.
-  - Accessible depuis plusieurs hyperviseurs en mode partagé.
-- **Avantages** :
-  - Facile à configurer.
-  - Bonne compatibilité (Proxmox, ESXi, KVM, etc.).
-- **Inconvénients** :
-  - Performances réseau limitées (dépend du matériel et de la bande passante).
-- **Mise en œuvre NFS (sur un serveur Linux)** :
-  1. Installer le serveur NFS :
-     ```bash
-     sudo apt install nfs-kernel-server
-     ```
-  2. Créer un dossier à partager :
-     ```bash
-     sudo mkdir /mnt/shared
-     sudo chown nobody:nogroup /mnt/shared
-     ```
-  3. Configurer l’export dans `/etc/exports` :
-     ```
-     /mnt/shared 192.168.1.0/24(rw,sync,no_subtree_check)
-     ```
-  4. Appliquer la configuration :
-     ```bash
-     sudo exportfs -ra
-     ```
+[^f1]: Ce n'était pas du tout une préoccupation à l'époque. 
 
 
+NFS fonctionne en client-serveur. Le port par défaut : 2049.
 
-TODO 
-voir si on sépare dans un autre fichier ou si on renomme en **san**
+### Mise en œuvre
+
+#### Le serveur 
+
+Installer le serveur NFS
+
+```bash
+># apt install nfs-kernel-server
+```
+
+Gestion du service _via_ `systemd` « comme d'habitude »
+
+```bash
+># systemctl <start | stop | restart | enable> nfs-server
+```
+
+Partager des répertoires sur le serveur _via_ le fichier de configuration `/etc/exports` dont le format à l'allure suivante : 
+
+```conf
+/my/share   192.168.1.5(rw,sync)
+/my/share   192.168.1.5(rw,sync) 192.168.1.6(rw,sync)
+/my/share   192.168.1.0/24(rw,sync)
+```
+
+    - partage à une machine;
+    - à plusieurs;
+    - à un réseaux.
+
+Les options sont multiples : `rw`, `ro`, `sync`, `root_squash`…
+    - `root_squash` force le mapping de _root_ (sur les clients) vers _anonyme_ (sur le serveur).
+
+```conf
+/my/share   192.168.1.5(rw,all_squash,anonuid=1001,anongid=1001,async)
+```
+
+Appliquer les changements à chaque modification du fichier `/etc/exports`. 
+
+```bash 
+># exports -a
+```
+
+#### Le client
+
+Installation de la partie cliente 
+
+```bash 
+># apt install nfs-common
+```
+
+Dès lors monter le partage se fait _via_
+
+```bash 
+># mkdir -p /mnt/share
+># mount -t nfs 192.168.1.4:/my/share /mnt/share
+```
+
+:::tip Vérification
+La commande `df -h` montre le filesystem et donc si le partage est bien monté. 
+:::
 
 
-#### **2.3. Stockage iSCSI**
-- **Fonctionnement** :
-  - Emule un disque local sur le réseau en utilisant le protocole iSCSI.
-  - Très utilisé pour les SAN dans les grandes infrastructures.
-- **Avantages** :
-  - Performances proches du stockage local.
-  - Fonctionne avec les principaux hyperviseurs.
-- **Inconvénients** :
-  - Configuration plus complexe.
-- **Mise en œuvre iSCSI (sur un serveur Linux)** :
-  1. Installer le serveur iSCSI :
-     ```bash
-     sudo apt install tgt
-     ```
-  2. Configurer une cible iSCSI :
-     Éditer `/etc/tgt/conf.d/iscsi.conf` :
-     ```
-     <target iqn.2023-01.localhost:target1>
-         backing-store /dev/sdb
-     </target>
-     ```
-  3. Redémarrer le service iSCSI :
-     ```bash
-     sudo systemctl restart tgt
-     ```

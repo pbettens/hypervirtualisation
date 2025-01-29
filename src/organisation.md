@@ -7,14 +7,11 @@ tags: …
 
 ## Organisation
 
-Le travail au cours se fait par équipe de 4 personnes. 
+### Évaluation 
 
-Une séance de cours se compose de : une présentation théorique de 15-30 min, de travail en équipe et d'une clôture qui consiste à présenter aux autres le travail effectué. 
+L'évaluation est continue, elle consiste à la présentation des différentes étapes à réaliser (cfr. plan).
 
-Les équipes seront de deux types — les **verts** et les **bleus** — en fonction de l'hyperviseur utilisé :
-
-- Proxmox
-- VMWare
+Pour la _seconde session_, toutes les étapes doivent être présentées. 
 
 ### Planning
 
@@ -35,11 +32,34 @@ _Planning informatif pouvant être sujet à changements._
 | **11**      | **Séance spéciale** : présentation de Kubernetes par une ou un intervenant externe ||
 |**12**       | Rattrapage, réponse aux questions, préparation de l'examen ||
 
+### Organisation des séances
 
-### Évaluation 
+Le travail au cours se fait par équipe de 4 personnes. 
 
-L'évaluation est continue, elle consiste à la présentation des différentes étapes à réaliser. 
+Une séance de cours se compose de : une présentation théorique de 15-30 min, de travail en équipe et d'une clôture qui consiste à présenter aux autres le travail effectué. 
 
-TODO définir ces étapes
+Les équipes seront de deux types — les **verts** et les **bleus** — en fonction de l'hyperviseur utilisé :
 
-Pour la _seconde session_, toutes les étapes doivent être présentées. 
+- Proxmox
+- VMWare
+
+#### _Check list_ 
+
+_(Cette liste sera construite au fur et à mesure du cours)_
+
+|Sujet          | Détail                    ||
+|--             |--                         |--|
+|Matériel       |Reconnaissance du matériel. État des lieux| 🔲 |
+|Installation   |Installation de l'hyperviseur| 🔲 |
+|Accessibilité  |L'hyperviseur est accessible en ssh et à distance au sein du local. La configuration réseau est opérationnelle| 🔲 |
+|Rack           |L'hyperviseur est dans le rack | 🔲 |
+|Services       |Au minimum deux services tournent sur 2 machines virtuelles différentes | 🔲 |
+|SAN            |Installation d'un SAN (@todo)  | 🔲 |
+|Migration      |Une migration d'une machine est possible d'un hyperviseur à un autre| 🔲 |
+|Ansible        |@todo automatisation d'une install| 🔲 |
+|Conteneur      |Déploiement d'au moins 2 conteneurs (avec un service)| 🔲 |
+|   || 🔲 |
+|   || 🔲 |
+
+
+

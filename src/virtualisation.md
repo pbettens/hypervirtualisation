@@ -12,13 +12,13 @@ icon: book
 
 - En 1960, IBM introduit le concept de virtualisation avec son système CP-40 🔗 en 1964, suivi du CP-67 en 1966. Ces systèmes permettaient de partitionner les mainframes (ordinateurs capables de traiter des milliards de calculs et de transactions en temps réel, de manière sécurisée et fiable) en plusieurs machines virtuelles, chacune exécutant son propre système d’exploitation.
 
-- 1970-1980, la virtualisation est moins utile puisque les PCs se démocratisent. 
-
-- 1990, croissance d'internet et des besoins. 
-- 1998 création de VMWare
-- 2003 création de Xen (_open source_) mort depuis
-- 2007 KVM (_Kernel-based Virtual Machine_) est intégré au noyau linux 
-- 2010… virtualisation « partout ». 
+- 1970-1980, la virtualisation est moins utile puisque les PCs se démocratisent;
+- 1990, croissance d'internet et des besoins;
+- 1998 création de VMWare;
+- 2003 création de Xen (_open source_) mort depuis;
+- 2007 KVM (_Kernel-based Virtual Machine_) est intégré au noyau linux;
+- 2010… virtualisation « partout »;
+- 2024 VMWare est racheté par Broadcom qui met fin aux licences « éducation ».
 
 ![IBM 360. Photo promotionnelle 1964. IBM](/assets/img/ibm-360.webp)  
 _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
@@ -94,7 +94,12 @@ KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : 
 
 #### VMWare 
 
-VMWare fait partie de Broadcom
+VMWare fait partie de Broadcom. Broadcom ne propose pas de licence éducation ni de licence de test. 
+
+#### Proxmox
+
+**Proxmox VE** (_virtual environment_) est une plateforme open-source pour la virtualisation. Proxmox VE est basé sur Debian et utilise — entre autre — KVM. Il propose une interface web pour la gestion des machines virtuelles et des conteneurs. 
+
 
 
 

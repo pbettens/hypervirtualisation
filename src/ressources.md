@@ -1,6 +1,6 @@
 ---
 title: Ressources
-order: 31
+order: 21
 icon: dungeon
 tags: Ressources
 ---

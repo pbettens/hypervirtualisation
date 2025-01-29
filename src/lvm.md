@@ -11,7 +11,7 @@ Gestion de l'espace de stockage qui sépare la gestion des parties physiques du 
 
 Là où habituellement un répertoire est monté sur une partition d'un disque dur, un répertoire sera monté sur un **volume logique** (*logical volume*). Un volume logique est une partie — une *pseudo-partition* — d'un groupe de volume qui est lui-même constitué de plusieurs volumes physiques. Un peu comme ceci :
 
-![illustration d'une structure LVM - Crédit It-connect](img/lvm-itconnect.png)
+![illustration d'une structure LVM - Crédit It-connect](/assets/img/lvm-itconnect.png)
 
 ## Définitions
 
@@ -153,10 +153,3 @@ maximale, il est possible de le redimentionner avec *lvresize*.
 
 
 
-# Références
-
-- Article Wikipedia <https://fr.wikipedia.org/wiki/Gestion_par_volumes_logiques>
-
-- Debian facile <https://debian-facile.org/doc:systeme:lvm>
-
-- LinuxFR, Gestion des volumes RAID avec LVM <https://linuxfr.org/news/gestion-de-volumes-raid-avec-lvm>

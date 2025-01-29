@@ -29,7 +29,6 @@ Le ou les disques se trouvent directement sur l'hôte.
 
 **LVM** (_Logical Volume Manager_) est un outil permettant de gérer les volumes logiques sur un ou plusieurs disques physiques. LVM offre une plus grande **flexibilité** dans l'allocation de l'espace disque et donne la possibilité de **redimensionner** les volumes logiques. 
 
-_Voir [LVM](/lvm.md)_
 
 
 ### Stockage distant
@@ -66,11 +65,8 @@ Les performances de _iSCSI_ sont supérieures (supporte mieux la charge). _iSCSI
 
 
 
-
-
-
-
+:::note 
+_Voir [LVM](/lvm.md)_  
 _Voir [NFS](nfs.md)_  
-
-
+:::
 

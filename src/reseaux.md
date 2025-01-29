@@ -25,8 +25,13 @@ Il existe deux techniques dont les détails diffèrent un peu en fonction de l'h
 Le NAT est plus fréquent dans les environnements de test et avec des hyperviseurs de type 2 (_hosted_).
 
 - KVM utilise `bridge-util` ou `openvswitch`
-- Proxmox est une _surcouche_ à KVM et porpose une interface web pour créer un bridge et l'associer à un VLAN (@fixme à vérifier)
-- ESXi utilise ses _vswitch_ propriétaires TODO
+- Proxmox est une _surcouche_ à KVM et propose une interface web pour créer un bridge et l'associer à un VLAN (@fixme à vérifier)
+- ESXi utilise ses _vswitch_ propriétaires
+
+
+:::note  
+_Voir [Bridge](bridge.md)_
+:::
 
 
 

@@ -144,24 +144,10 @@ img {
 }
 
 
-.footnotes-item {
-    color: green;
-}
-
 .footnote-ref {
     font-weight: bold;
     color: green;
     text-decoration: none;
-}
-
-.footnote-ref::before {
-    content: "[";
-    display: none;
-}
-
-.footnote-ref::after {
-    content: "]";
-    display: none;
 }
 
 .note, .warning, .tip {

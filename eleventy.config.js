@@ -57,6 +57,15 @@ module.exports = function (eleventyConfig) {
         });
     });
 
+    eleventyConfig.addTransform("fixImagePaths", function (content, outputPath) {
+        if (outputPath && outputPath.endsWith(".html")) {
+            return content.replace(/<img src="\/assets\/img\/(.*?)"/g, (match, filename) => {
+                return `<img src="/hypervirtualisation/assets/img/${filename}"`;
+            });
+        }
+        return content;
+    });
+
 
     eleventyConfig.setLibrary("md", markdownLib);
     

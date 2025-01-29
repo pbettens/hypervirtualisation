@@ -67,6 +67,6 @@ Les performances de _iSCSI_ sont supérieures (supporte mieux la charge). _iSCSI
 
 :::note 
 _Voir [LVM](/lvm.md)_  
-_Voir [NFS](nfs.md)_  
+_Voir [NFS](/nfs.md)_  
 :::
 

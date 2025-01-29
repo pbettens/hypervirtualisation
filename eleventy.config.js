@@ -70,6 +70,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.setLibrary("md", markdownLib);
     
     return {
+        pathPrefix: "hypervirtualisation",
         dir: {
             input: "src",
             output: "_site",

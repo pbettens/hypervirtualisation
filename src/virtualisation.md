@@ -20,7 +20,7 @@ icon: book
 - 2010… virtualisation « partout »;
 - 2024 VMWare est racheté par Broadcom qui met fin aux licences « éducation ».
 
-![IBM 360. Photo promotionnelle 1964. IBM](/assets/img/ibm-360.webp)  
+![IBM 360. Photo promotionnelle 1964. IBM](assets/img/ibm-360.webp)  
 _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
 
 

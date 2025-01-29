@@ -30,7 +30,7 @@ Le NAT est plus fréquent dans les environnements de test et avec des hyperviseu
 
 
 :::note  
-_Voir [Bridge](bridge.md)_
+_Voir [Bridge](/bridge.md)_
 :::
 
 

@@ -17,6 +17,11 @@
     
 </head>
 <body>
+    <button class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
     <div class="sidebar">
         {% include "sidebar.njk" %}
     </div>
@@ -27,5 +32,17 @@
         </div>
     </div>
 </body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.querySelector(".sidebar");
+    const hamburger = document.querySelector(".hamburger");
+
+    hamburger.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+        hamburger.classList.toggle("active");
+    });
+});
+</script>
 
 </html>

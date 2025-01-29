@@ -55,7 +55,6 @@ img {
     border-bottom: 2rem;
 }
 
-/* Sidebar styles */
 .sidebar {
     position: fixed;
     top: 0;
@@ -71,16 +70,28 @@ img {
 /* Responsive styles */
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease-in-out;
+        width: 250px;
+        height: 100%;
+        background-color: #f5f6fa;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    .sidebar.active {
+        left: 0;
     }
 }
 
 @media (max-width: 576px) {
     .sidebar {
-        position: relative;
-        width: 100%;
         height: auto;
-        box-shadow: none;
+    }
+
+    .sidebar.active {
+        width: 100%;
     }
 
     .sidebar nav ul li {
@@ -116,6 +127,44 @@ img {
     margin-right: 10px;
 }
 
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: #4B4B4B;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+}
+
+.hamburger.active div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 .content-wrap {
     margin-left: 250px;
 }
@@ -129,7 +178,7 @@ img {
 
 @media (max-width: 768px) {
     .content-wrap {
-        margin-left: 200px;
+        margin-left: 0;
     }
 }
 

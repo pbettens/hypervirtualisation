@@ -30,11 +30,11 @@ Le NAT est plus fréquent dans les environnements de test et avec des hyperviseu
 
 
 :::note  
-_Voir [Bridge](/bridge.md)_
+_Voir [Bridge](bridge.md)_
 :::
 
 
 
-## TODO
+## TODO2
 
 - confirmation : je peux configurer un bridge et mettre certaines vm dans certains vlans. il suffit que mon hyperviseur soit connecté physiquement dans un trunk. 

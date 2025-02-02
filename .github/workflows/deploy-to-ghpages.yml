@@ -28,6 +28,9 @@ jobs:
           npm install
           npx @11ty/eleventy --pathprefix 'hypervirtualisation'
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'  # Correct path!
+          name: github-pages # Good practice
 
   deploy:
     runs-on: ubuntu-latest

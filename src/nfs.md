@@ -81,3 +81,10 @@ La commande `df -h` montre le filesystem et donc si le partage est bien monté.
 :::
 
 
+### *Troubleshooting* et autres commandes
+
+`showmount -e <IP>`
+
+`rpcinfo -p`
+
+`nfsstat -m` donne des statistiques sur l'utilisation de NFS sur le serveur.

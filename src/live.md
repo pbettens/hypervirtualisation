@@ -44,7 +44,17 @@ Pour préparer une telle clé USB (à partir d'un système linux) :
 
 - _booter_ sur la clé
 
- 
+
+#### *Troubleshooting* et commandes
+
+Lors de l'utilisation d'une _live distribution_, le login est `user` et le mot de passe associé est `live`. 
+
+L'utilisateur `user` a un `sudo` illimité et sans mot de passe ce qui a pour effet que `sudo -i` sans mot de passe donne un accès `root`. 
+
+```bash
+~# cat /etc/sudoers.d/live
+user ALL=(ALL) NOPASSWD: ALL
+```
 
 
 

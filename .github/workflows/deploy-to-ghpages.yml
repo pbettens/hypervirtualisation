@@ -27,7 +27,7 @@ jobs:
         run: |
           npm install
           npx @11ty/eleventy --pathprefix 'hypervirtualisation'
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 

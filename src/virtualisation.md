@@ -89,12 +89,30 @@ Couplé à [KVM][kvm], QEmu peut-être un hyperviseur — élément logiciel, 
 
 KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : gestionnaire de mémoire, ordonnanceur, pile d'entrées/sorties (E/S), pilotes de périphériques, gestionnaire de sécurité, pile réseau, etc. Chaque machine virtuelle est mise en œuvre comme un processus Linux standard.
 
+### Exemples
+
+#### Le réseau pédagogique
+
+Le réseau pédagogique offre les services suivants (_Pouvons nous les reconnaitre ?_ ) : 
+
+![Hôtes virtuels en production à l'ESI (jan. 2025)](/assets/img/esi-hotes.png "Hôtes virtuels en production à l'ESI (jan. 2025) _(privé)_")
+
+La virtualisation se fait avec **QEMU-KVM** avec **_virt-manager_** comme surcouche graphique. 
+
+[Exemple d'appel d'offre](/assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf) _(lien privé)_
+
+#### Un laboratoire virtuel
+
+Pour les besoins d'un cours, je veux proposer à chaque étudiant et étudiante une machine linux sur laquelle il pourra faire ses manipulations. J'ai deux contraintes (fortes) : 
+
+- cette machine doit être accessible de l'extérieure;
+- je ne dispose que de 2 IP publiques
 
 ### Outils
 
 #### VMWare 
 
-VMWare fait partie de Broadcom. Broadcom ne propose pas de licence éducation ni de licence de test. 
+VMWare fait partie de Broadcom. Broadcom ne propose plus de licence éducation ni de licence de test. 
 
 #### Proxmox
 

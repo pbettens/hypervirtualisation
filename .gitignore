@@ -8,9 +8,11 @@
 !eleventy.config.js
 !assets/
 !assets/**
+assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf 
+assets/img/esi-hotes.png
 !src/
 !src/**
 
 !.nojekyll
 !.github
-!.github/**
+!.github/** 

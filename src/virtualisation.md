@@ -77,7 +77,7 @@ _(Source : Wikipedia - Hyperviseur de type 2)_
 
 Un émulateur *hardware* est un programme qui va émuler — c'est-à-dire imiter — le comportement d'un autre programme ou d'un périphérique (*device*). L'émulateur imite le comportement de tous les composants de la machine. Cette émulation a un coût. Dans le cas de la virtualisation, c'est également un programme qui va imiter le comportement de la machine **et** utiliser une sous-couche matérielle (*hardware*) permettant de faire directement des appels matériels. 
 
-Cas particulier de **QEmu** et **KVM**
+#### Cas particulier de **QEmu** et **KVM**
 
 Dans son rôle d'émulateur de machine, QEmu émule une machine sur une autre. Il est capable d'émuler une machine 32 bits sur une 64 bits et *vice versa* ou encore d'émuler une architecture ARM sur une architecture x86. Il est peu efficace à cause du surcout occasionné par l'émulation du matériel. 
 
@@ -91,6 +91,12 @@ KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : 
 
 ### Exemples
 
+#### *gitesi* et *poesi*
+
+Les machines hébergeant le serveur **Gitlab** de l'école (_gitesi_) et la plateforme pédagogique **Moodle** (_poesi_) sont (actuellement) deux machines virtuelles sur un serveur physique et virtualisée grâce à QEMU-KVM et _virt-manager_. 
+
+![Screenshot virt-manager](/assets/img/virt-manager-esi.png "Screenshot virt-manager")
+
 #### Le réseau pédagogique
 
 Le réseau pédagogique offre les services suivants (_Pouvons nous les reconnaitre ?_ ) : 
@@ -103,10 +109,14 @@ La virtualisation se fait avec **QEMU-KVM** avec **_virt-manager_** comme surcou
 
 #### Un laboratoire virtuel
 
-Pour les besoins d'un cours, je veux proposer à chaque étudiant et étudiante une machine linux sur laquelle il pourra faire ses manipulations. J'ai deux contraintes (fortes) : 
+Pour les besoins d'un cours (et _because_ COVID19), je veux proposer à chaque étudiant et étudiante une machine linux sur laquelle elle [^f1] pourra faire ses manipulations. J'ai deux contraintes (fortes) : 
 
 - cette machine doit être accessible de l'extérieure;
 - je ne dispose que de 2 IP publiques
+
+![Illustration laboratoire virtuel](/assets/img/lab.png "Illustration laboratoire virtuel")
+
+[^f1]: Accord de proximité.
 
 ### Outils
 

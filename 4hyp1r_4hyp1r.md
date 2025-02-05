@@ -84,20 +84,22 @@ Au sein de la formation de bachelier en informatique, cette activité d’appren
 
 ## Modalités d’évaluations
 
-- 100 % pour la note de l’examen.
+Première session : évaluation continue. 
+Seconde session : présentation et défense du travail à faire au labo. 
 
 ## Contenus
 
 1. Introduction à la virtualisation
-2. Concepts et outils de stockage (SAN)
-3. Installation et configuration de Proxmox ou VMware
-4. Gestion des VMs sur un hyperviseur
-5. Gestion avancée de l’hyperviseur
-6. Introduction à Docker et création de conteneurs
-7. Docker Compose et réseau Docker
-8. Orchestration avec Ansible
-9. Orchestration avancée avec Ansible
-10. Migration de machines virtuelles
+2. Réseaux dans les hyperviseurs
+3. Installation et configuration d'un hyperviseur
+4. Gestion des VMs sur un hyperviseur	
+5. Stockage (SAN storage area network) dans les hyperviseurs
+6. Gestion avancée de l'hyperviseur
+7. Automatisation avec Ansible
+8. Automatisation avec Ansible (suite)
+9. Conteneurisation avec Docker
+11.Présentation de l'orchestration avec Kubernetes
+
 
 ## Bibliographie
 

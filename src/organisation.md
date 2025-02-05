@@ -38,6 +38,8 @@ Le travail au cours se fait par équipe de 4 personnes.
 
 Une séance de cours se compose de : une présentation théorique de 15-30 min, de travail en équipe et d'une clôture qui consiste à présenter aux autres le travail effectué. 
 
+Un rapport complet est rédigé au fil des séances, au format **markdown**  et dans un dépôt **git**. 
+
 #### *Check list* 
 
 _(Cette liste sera construite au fur et à mesure du cours)_

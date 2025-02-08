@@ -114,6 +114,8 @@ Pour les besoins d'un cours (et _because_ COVID19), je veux proposer à chaque �
 - cette machine doit être accessible de l'extérieure;
 - je ne dispose que de 2 IP publiques
 
+Voici le schéma de l'organisation.
+
 ![Illustration laboratoire virtuel](/assets/img/lab.png "Illustration laboratoire virtuel")
 
 [^f1]: Accord de proximité.

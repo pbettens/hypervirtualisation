@@ -1,17 +1,10 @@
----
-title: LVM
-order: 22
-tags: Ressources
-icon: dungeon
----
-
 # LVM - Logical Volume Management 
 
 Gestion de l'espace de stockage qui sépare la gestion des parties physiques du stockage, les disques, des parties logiques, les points de montage. 
 
 Là où habituellement un répertoire est monté sur une partition d'un disque dur, un répertoire sera monté sur un **volume logique** (*logical volume*). Un volume logique est une partie — une *pseudo-partition* — d'un groupe de volume qui est lui-même constitué de plusieurs volumes physiques. Un peu comme ceci :
 
-![illustration d'une structure LVM - Crédit It-connect](/assets/img/lvm-itconnect.png)
+![illustration d'une structure LVM - Crédit It-connect](assets/img/lvm-itconnect.png)
 
 ## Définitions
 

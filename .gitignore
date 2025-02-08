@@ -4,7 +4,8 @@
 !README.md
 !4hyp1r_4hyp1r.md
 !.gitignore
-!package.json 
+!package.json
+!package-lock.json 
 !assets/
 !assets/**
 assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf 

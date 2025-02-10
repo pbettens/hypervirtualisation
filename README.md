@@ -9,8 +9,6 @@ _Hypervirtualisation ou virtualisation mais sûrement pas hypervision_
 [Introduction à la conteneurisation](src/conteneurisation.md)
 
 
-[Ressources](src/ressources.md)
-
 [Sources](src/sources.md)
 
 ## Publication

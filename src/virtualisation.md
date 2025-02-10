@@ -1,11 +1,4 @@
----
-title: Virtualisation
-order: 10
-tags: Cours
-icon: book
----
-
-## Virtualisation
+# Virtualisation
 
 > La **virtualisation** permet à plusieurs systèmes d’exploitation de fonctionner en parallèle sur une seule machine physique.  
 
@@ -34,7 +27,7 @@ _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
 
 > Un **hyperviseur** est une plateforme de virtualisation. 
 
-### Hyperviseur de **type 1** (natif)
+## Hyperviseur de **type 1** (natif)
 
 Un **hyperviseur de Type 1**, **natif**, voire « **_bare metal_** » est un logiciel qui s'exécute directement sur une plateforme matérielle.
 
@@ -57,7 +50,7 @@ _(Source : Wikipedia - Hyperviseur de type 1)_
 
 
 
-### Hyperviseur de **type 2** (_hosted_)
+## Hyperviseur de **type 2** (_hosted_)
 
 Un **hyperviseur de type 2** est un logiciel qui s'exécute à l'intérieur d'un autre système d'exploitation. Un système d'exploitation invité s'exécutera donc en troisième niveau au-dessus du matériel. Les systèmes d'exploitation invités n'ayant pas conscience d'être virtualisés, ils n'ont pas besoin d'être adaptés. 
 On peut parler d'**émulation**. 
@@ -77,7 +70,7 @@ _(Source : Wikipedia - Hyperviseur de type 2)_
 
 Un émulateur *hardware* est un programme qui va émuler — c'est-à-dire imiter — le comportement d'un autre programme ou d'un périphérique (*device*). L'émulateur imite le comportement de tous les composants de la machine. Cette émulation a un coût. Dans le cas de la virtualisation, c'est également un programme qui va imiter le comportement de la machine **et** utiliser une sous-couche matérielle (*hardware*) permettant de faire directement des appels matériels. 
 
-#### Cas particulier de **QEmu** et **KVM**
+### Cas particulier de **QEmu** et **KVM**
 
 Dans son rôle d'émulateur de machine, QEmu émule une machine sur une autre. Il est capable d'émuler une machine 32 bits sur une 64 bits et *vice versa* ou encore d'émuler une architecture ARM sur une architecture x86. Il est peu efficace à cause du surcout occasionné par l'émulation du matériel. 
 
@@ -89,15 +82,15 @@ Couplé à [KVM][kvm], QEmu peut-être un hyperviseur — élément logiciel, 
 
 KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : gestionnaire de mémoire, ordonnanceur, pile d'entrées/sorties (E/S), pilotes de périphériques, gestionnaire de sécurité, pile réseau, etc. Chaque machine virtuelle est mise en œuvre comme un processus Linux standard.
 
-### Exemples
+## Exemples
 
-#### *gitesi* et *poesi*
+### *gitesi* et *poesi*
 
 Les machines hébergeant le serveur **Gitlab** de l'école (_gitesi_) et la plateforme pédagogique **Moodle** (_poesi_) sont (actuellement) deux machines virtuelles sur un serveur physique et virtualisée grâce à QEMU-KVM et _virt-manager_. 
 
 ![Screenshot virt-manager](/assets/img/virt-manager-esi.png "Screenshot virt-manager")
 
-#### Le réseau pédagogique
+### Le réseau pédagogique
 
 Le réseau pédagogique offre les services suivants (_Pouvons nous les reconnaitre ?_ ) : 
 
@@ -107,7 +100,7 @@ La virtualisation se fait avec **QEMU-KVM** avec **_virt-manager_** comme surcou
 
 [Exemple d'appel d'offre](/assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf) _(lien privé)_
 
-#### Un laboratoire virtuel
+### Un laboratoire virtuel
 
 Pour les besoins d'un cours (et _because_ COVID19), je veux proposer à chaque étudiant et étudiante une machine linux sur laquelle elle [^f1] pourra faire ses manipulations. J'ai deux contraintes (fortes) : 
 
@@ -120,13 +113,13 @@ Voici le schéma de l'organisation.
 
 [^f1]: Accord de proximité.
 
-### Outils
+## Outils
 
-#### VMWare 
+### VMWare 
 
 VMWare fait partie de Broadcom. Broadcom ne propose plus de licence éducation ni de licence de test. 
 
-#### Proxmox
+### Proxmox
 
 **Proxmox VE** (_virtual environment_) est une plateforme open-source pour la virtualisation. Proxmox VE est basé sur Debian et utilise — entre autre — KVM. Il propose une interface web pour la gestion des machines virtuelles et des conteneurs. 
 

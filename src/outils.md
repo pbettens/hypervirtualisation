@@ -1,11 +1,6 @@
----
-title: Live
-order: 21
-icon: dungeon
-tags: Ressources
----
+# Outils divers
 
-### Utiliser une distribution live
+## Utiliser une distribution live
 
 Une distribution _live_ (anciennement _live CD_) est une distribution linux bootable sur un support externe et qui ne modifie pas le _file system_ (système de fichiers) de l'hôte. 
 
@@ -45,7 +40,7 @@ Pour préparer une telle clé USB (à partir d'un système linux) :
 - _booter_ sur la clé
 
 
-#### *Troubleshooting* et commandes
+### *Troubleshooting* et commandes
 
 Lors de l'utilisation d'une _live distribution_, le login est `user` et le mot de passe associé est `live`. 
 
@@ -60,3 +55,20 @@ user ALL=(ALL) NOPASSWD: ALL
 
 [Debian live](https://www.debian.org/CD/live/)  
 [Rendre sa clé bootable persistante](https://debian-facile.org/doc:install:deblive-usb-persistant)
+
+
+## Connection COM
+
+Pour se connecter à la console d'un _switch_ ou d'un _router_, on utilise le port COM. 
+
+Sous MS Windows, le programme `putty` fait bien l'affaire.   
+Sous linux, il existe plusieurs programmes. Par exemple : `minicom`. La configuration se fait _via_ `minicom -s`.
+
+![Interface de configuration de minicom](assets/img/minicom-setup.png "interface de configuration de minicom")
+
+![Choix du périphérique et de la vitesse](assets/img/minicom-setup-2.png "interface de configuration de minicom")
+
+Une fois la configuration faite, lancer `minicom` (sans paramètre cette fois).
+
+
+

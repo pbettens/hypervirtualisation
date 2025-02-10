@@ -1,11 +1,4 @@
----
-title: Réseau
-order: 11
-tags: Cours
-icon: book
----
-
-## Le réseau dans les hyperviseurs
+# Le réseau dans les hyperviseurs
 
 Dans un environnement virtualisé, les machines — dans ce cas, virtuelles — doivent communiquer : soit entre elles, soit avec l'hôte physique soit encore, avec le réseau externe. La **connectivité** est virtuelle et doit être la plus **efficace** possible. Parfois, l'environnement nécessitera que les réseaux virtuels soient segmentés pour permettre une meilleure **isolation**.
 
@@ -29,12 +22,13 @@ Le NAT est plus fréquent dans les environnements de test et avec des hyperviseu
 - ESXi utilise ses _vswitch_ propriétaires
 
 
-:::note  
-_Voir [Bridge](bridge.md)_
+:::info 💡 À LIRE AUSSI
+[Bridge linux](bridge.md)
 :::
 
 
+:::warning
 
-## TODO2
+**À vérifier** Configuration d'un bridge avec dans certains _VLANs_. 
 
-- confirmation : je peux configurer un bridge et mettre certaines vm dans certains vlans. il suffit que mon hyperviseur soit connecté physiquement dans un trunk. 
+:::

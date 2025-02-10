@@ -1,9 +1,3 @@
----
-title: Sources
-order: 50
-tags: …
----
-
 # Sources 
 
 [La virtualisation - découverte](https://mcflypartages.fr/blog/tssr_virtualisation/) (_consulté le 6 jan. 2025_)
@@ -28,10 +22,9 @@ tags: …
 
 [LinuxFR - Gestion des volumes RAID avec LVM](https://linuxfr.org/news/gestion-de-volumes-raid-avec-lvm) (_(re)consulté le 28 janv. 2025_)
 
+[minicom serial communication program](https://www.cyberciti.biz/tips/connect-soekris-single-board-computer-using-minicom.html) (_consulté le 10 fév. 2025_)
 
 
-
-TODO
 
 
 [qemu]:http://wiki.qemu.org/Main_Page

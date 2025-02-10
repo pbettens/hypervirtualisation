@@ -48,7 +48,7 @@ _(Cette liste sera construite au fur et à mesure du cours)_
 |--             |--                         |--|
 |Matériel       |Reconnaissance du matériel. État des lieux| 🔲 |
 |Installation   |Installation de l'hyperviseur| 🔲 |
-|Accessibilité  |L'hyperviseur est accessible en ssh et à distance au sein du local. La configuration réseau est opérationnelle| 🔲 |
+|Accessibilité  |L'hyperviseur est accessible en ssh et à distance au sein du local. À chaque groupe est associé un VLAN.  La configuration réseau est opérationnelle| 🔲 |
 |Rack           |L'hyperviseur est dans le rack | 🔲 |
 |Services       |Au minimum deux services tournent sur 2 machines virtuelles différentes | 🔲 |
 |SAN            |Installation d'un SAN (@todo)  | 🔲 |

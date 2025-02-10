@@ -51,24 +51,27 @@ L'utilisateur `user` a un `sudo` illimité et sans mot de passe ce qui a pour ef
 user ALL=(ALL) NOPASSWD: ALL
 ```
 
-
+:::tip LIENS    
 
 [Debian live](https://www.debian.org/CD/live/)  
 [Rendre sa clé bootable persistante](https://debian-facile.org/doc:install:deblive-usb-persistant)
 
+:::
 
 ## Connection COM
 
 Pour se connecter à la console d'un _switch_ ou d'un _router_, on utilise le port COM. 
 
 Sous MS Windows, le programme `putty` fait bien l'affaire.   
-Sous linux, il existe plusieurs programmes. Par exemple : `minicom`. La configuration se fait _via_ `minicom -s`.
+Sous linux, il existe plusieurs programmes (dont `putty` _by the way_). Par exemple : `minicom`. 
 
-![Interface de configuration de minicom](assets/img/minicom-setup.png "interface de configuration de minicom")
+Sa configuration se fait _via_ `minicom -s`.
 
+![Interface de configuration de minicom](assets/img/minicom-setup.png "interface de configuration de minicom") 
 ![Choix du périphérique et de la vitesse](assets/img/minicom-setup-2.png "interface de configuration de minicom")
 
 Une fois la configuration faite, lancer `minicom` (sans paramètre cette fois).
+
 
 
 

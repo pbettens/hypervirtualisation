@@ -1,10 +1,3 @@
----
-title: Stockage
-order: 12
-tags: Cours
-icon: book
----
-
 # Stockage
 
 Différents types de stockages peuvent être envisagés en fonction du matériel et de l'usage : 
@@ -13,7 +6,7 @@ Différents types de stockages peuvent être envisagés en fonction du matériel
 - ajout d'une redondance grace à des systèmes RAID;
 - ajout d'une certaine souplesse en différenciant _volume physique_ et _volume logique_.
 
-### Stockage local
+## Stockage local
 
 Le ou les disques se trouvent directement sur l'hôte. 
 
@@ -25,13 +18,13 @@ Le ou les disques se trouvent directement sur l'hôte.
 ||Pas ou peu de tolérance aux pannes (sans RAID)|
 ||Pas de partage entre différents hôtes
 
-#### LVM
+### LVM
 
 **LVM** (_Logical Volume Manager_) est un outil permettant de gérer les volumes logiques sur un ou plusieurs disques physiques. LVM offre une plus grande **flexibilité** dans l'allocation de l'espace disque et donne la possibilité de **redimensionner** les volumes logiques. 
 
 
 
-### Stockage distant
+## Stockage distant
 
 Le stockage se trouve sur une autre machine ce qui permet de centraliser les données et de les partager entre plusieurs hyperviseurs. 
 
@@ -65,7 +58,7 @@ Les performances de _iSCSI_ sont supérieures (supporte mieux la charge). _iSCSI
 
 
 
-:::note 
+:::tip À LIRE AUSSI
 _Voir [LVM](/lvm.md)_  
 _Voir [NFS](/nfs.md)_  
 :::

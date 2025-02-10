@@ -1,11 +1,4 @@
----
-title: NFS
-order: 23
-tags: Ressources
-icon: dungeon
----
-
-## NFS
+# NFS
 
 **NFS** (_Network Files System_) est un protocole de partage de fichiers sur le réseau. Initialement développé pour _*nix* par Sun Microsystems en 1984, NFS est également disponible pour MS Windows
 
@@ -20,9 +13,9 @@ NFS existe en plusieurs versions : 
 
 NFS fonctionne en client-serveur. Le port par défaut : 2049.
 
-### Mise en œuvre
+## Mise en œuvre
 
-#### Le serveur 
+### Le serveur 
 
 Installer le serveur NFS
 
@@ -61,7 +54,7 @@ Appliquer les changements à chaque modification du fichier `/etc/exports`.
 ># exports -a
 ```
 
-#### Le client
+### Le client
 
 Installation de la partie cliente 
 
@@ -81,7 +74,7 @@ La commande `df -h` montre le filesystem et donc si le partage est bien monté.
 :::
 
 
-### *Troubleshooting* et autres commandes
+## *Troubleshooting* et autres commandes
 
 `showmount -e <IP>`
 

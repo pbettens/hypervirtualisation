@@ -13,7 +13,7 @@
 - 2010… virtualisation « partout »;
 - 2024 VMWare est racheté par Broadcom qui met fin aux licences « éducation ».
 
-![IBM 360. Photo promotionnelle 1964. IBM](/assets/img/ibm-360.webp)  
+![IBM 360. Photo promotionnelle 1964. IBM](/assets/img/ibm-360.jpg)  
 _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
 
 
@@ -94,11 +94,11 @@ Les machines hébergeant le serveur **Gitlab** de l'école (_gitesi_) et la plat
 
 Le réseau pédagogique offre les services suivants (_Pouvons nous les reconnaitre ?_ ) : 
 
-![Hôtes virtuels en production à l'ESI (jan. 2025)](/assets/img/esi-hotes.png "Hôtes virtuels en production à l'ESI (jan. 2025) _(privé)_")
+![Hôtes virtuels en production à l'ESI (jan. 2025)](/assets/img/esi-hotes.png "Hôtes virtuels en production à l'ESI (jan. 2025)")
 
 La virtualisation se fait avec **QEMU-KVM** avec **_virt-manager_** comme surcouche graphique. 
 
-[Exemple d'appel d'offre](/assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf) _(lien privé)_
+[Exemple d'appel d'offre](/assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf)
 
 ### Un laboratoire virtuel
 

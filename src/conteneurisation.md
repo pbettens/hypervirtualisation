@@ -1,11 +1,4 @@
----
-title: Conteneurisation
-tags: Cours
-order: 13
-icon: book
----
-
-## Conteneurisation
+# Conteneurisation
 
 > Un **conteneur** (_container_) est une forme légère de virtualisation où l'on encapsule uniquement ce qui est nécessaire à l'application. Le conteneur est exécuté sur le système hôte.
 

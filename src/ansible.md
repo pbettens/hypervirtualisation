@@ -1,8 +1,3 @@
----
-title: Ansible
-order: 14
-icon: book
-tags: Cours
----
+# Automatisation avec Ansible
 
-## Automatisation avec Ansible
+_work in progress_

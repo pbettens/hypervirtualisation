@@ -1,19 +1,12 @@
----
-title: Organisation
-order: 44
-tags: …
----
+# Organisation
 
-
-## Organisation
-
-### Évaluation 
+## Évaluation 
 
 L'évaluation est continue, elle consiste à la présentation des différentes étapes à réaliser (cfr. plan).
 
 Pour la _seconde session_, toutes les étapes doivent être présentées. 
 
-### Planning
+## Planning
 
 _Planning informatif pouvant être sujet à changements._
 
@@ -32,7 +25,7 @@ _Planning informatif pouvant être sujet à changements._
 | **11**      | **Séance spéciale** : présentation de Kubernetes par une ou un intervenant externe ||
 |**12**       | Présentation finale du travail ||
 
-### Organisation des séances
+## Organisation des séances
 
 Le travail au cours se fait par équipe de 4 personnes. 
 
@@ -40,7 +33,7 @@ Une séance de cours se compose de : une présentation théorique de 15-30 m
 
 Un rapport complet est rédigé au fil des séances, au format **markdown**  et dans un dépôt **git**. 
 
-#### *Check list* 
+### *Check list* 
 
 _(Cette liste sera construite au fur et à mesure du cours)_
 

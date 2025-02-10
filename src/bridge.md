@@ -43,31 +43,36 @@ Un module noyau est un _bout de code_ pouvant être inséré au code en cours de
 
 :::
 
-1. ajout du module au noyau
+### Ajout du module au noyau
 
 ```bash 
 :~# modprobe 8021q
 ```
 
-:::info
+:::tip
 Des infos sur le modules peuvent être données par `modinfo 8021q`.
 :::
 
+### Création du VLAN
 
-
+```bash
+:~# ip link add link <interface> name <interface.vlan> 
+    type vlan id <vlan id> 
+:~# ip link set dev <interface.vlan> up
+:~# ip addr <IP/mask> brd <broadcast IP> dev <interface.vlan>
+:~# ip -d link show <interface.vlan>
 ```
-ip link add link <nom interface> name <nom de interface du vlan> type vlan id <num vlan>
-ip link set dev <nom de interface du vlan> up 
-ip addr add <IP/masque> brd <broadcast IP> dev <nom de interface du vlan> 
-ip -d link show <nom de interface du vlan> 
+
+1. ajout du VLAN
+2. interface _up_
+3. attribution d'une adresse IP et d'un _default gateway_ (passerelle par défaut)
+4. affichage des détails sur l'interface
+
+Par exemple 
+```bash
+:~# ip link add link eth0 name eth0.5 type vlan id 5    
+:~# ip link set dev eth0.5 up
+:~# ip addr add 172.16.0.1/16 brd 172.16.255.200 dev eth0.5
+:~# ip -d link show eth0.5
 ```
-exemple : Nous allons créer un vlan 5 sur l'interface eno1:
 
-ip link add link eno1 name eno1.5 type vlan id 5   
-ip link set dev eno1.5 up
-ip addr add 192.168.1.200/24 brd 192.168.1.255 dev eno1.5
-ip -d link show eno1.5
-
-
-TODO brctl and co
-TODO voir pour les VLAN

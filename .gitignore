@@ -4,10 +4,12 @@
 !README.md
 !4hyp1r_4hyp1r.md
 !.gitignore
+!.vitepress/config.mts
 !package.json
 !package-lock.json 
 !assets/
 !assets/**
+
 !src/
 !src/**
 

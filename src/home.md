@@ -15,7 +15,7 @@ _Hypervirtualisation ou virtualisation mais sûrement pas hypervision <i class="
 
 ### Ressources diverses
 
-- [Distribution live](live.md)
+- [Divers outils](outils.md)
 - [Bridge](bridge.md)
 - [Gestion du stockage avec LVM](lvm.md)
 - [Partage réseau avec NFS](nfs.md)

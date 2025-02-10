@@ -4,14 +4,14 @@
 
 _Hypervirtualisation ou virtualisation mais sûrement pas hypervision_
 
-[Organisation](organisation.md)
-[Introduction à la virtualisation](virtualisation.md)
-[Introduction à la conteneurisation](conteneurisation.md)
+[Organisation](src/organisation.md)
+[Introduction à la virtualisation](src/virtualisation.md)
+[Introduction à la conteneurisation](src/conteneurisation.md)
 
 
-[Ressources](ressources.md)
+[Ressources](src/ressources.md)
 
-[Sources](sources.md)
+[Sources](src/sources.md)
 
 ## Publication
 

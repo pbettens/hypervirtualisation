@@ -13,7 +13,7 @@
 - 2010… virtualisation « partout »;
 - 2024 VMWare est racheté par Broadcom qui met fin aux licences « éducation ».
 
-![IBM 360. Photo promotionnelle 1964. IBM](/assets/img/ibm-360.jpg)  
+![IBM 360. Photo promotionnelle 1964. IBM](assets/img/ibm-360.webp)  
 _Source IBM. Photo promotionnelle (1964) pour l'IBM 360_
 
 
@@ -45,7 +45,7 @@ Exemples :
 - Proxmox (utilise KVM et LXC (_LinuX Container_))
     - _open source_ basée sur Debian
 
-![Hyperviseur de type 1 (Source Wikipedia)](/assets/img/Diagramme_ArchiHyperviseur_type1.png)  
+![Hyperviseur de type 1 (Source Wikipedia)](assets/img/Diagramme_ArchiHyperviseur_type1.png)  
 _(Source : Wikipedia - Hyperviseur de type 1)_
 
 
@@ -61,7 +61,7 @@ Exemples :
 - QEMU 
 - Virtual PC
 - VirtualBox d'Oracle
-![Hyperviseur de type 2 (Source Wikipedia)](/assets/img/Diagramme_ArchiEmulateur_type2.png)  
+![Hyperviseur de type 2 (Source Wikipedia)](assets/img/Diagramme_ArchiEmulateur_type2.png)  
 _(Source : Wikipedia - Hyperviseur de type 2)_
 
 > Une **machine virtuelle** (VM _virtual machine_) est une machine physique simulée de manière logicielle. Une machine virtuelle exécute un OS (_operating system_) complet, isolé des autres. 
@@ -88,17 +88,17 @@ KVM convertit Linux en un hyperviseur de type 1 en intégrant dans le noyau : 
 
 Les machines hébergeant le serveur **Gitlab** de l'école (_gitesi_) et la plateforme pédagogique **Moodle** (_poesi_) sont (actuellement) deux machines virtuelles sur un serveur physique et virtualisée grâce à QEMU-KVM et _virt-manager_. 
 
-![Screenshot virt-manager](/assets/img/virt-manager-esi.png "Screenshot virt-manager")
+![Screenshot virt-manager](assets/img/virt-manager-esi.png "Screenshot virt-manager")
 
 ### Le réseau pédagogique
 
 Le réseau pédagogique offre les services suivants (_Pouvons nous les reconnaitre ?_ ) : 
 
-![Hôtes virtuels en production à l'ESI (jan. 2025)](/assets/img/esi-hotes.png "Hôtes virtuels en production à l'ESI (jan. 2025)")
+![Hôtes virtuels en production à l'ESI (jan. 2025)](assets/img/esi-hotes.png "Hôtes virtuels en production à l'ESI (jan. 2025)")
 
 La virtualisation se fait avec **QEMU-KVM** avec **_virt-manager_** comme surcouche graphique. 
 
-[Exemple d'appel d'offre](/assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf)
+[Exemple d'appel d'offre](assets/pdf/2024CahierDesChargesVirtualisation_FMA_01.pdf)
 
 ### Un laboratoire virtuel
 
@@ -109,7 +109,7 @@ Pour les besoins d'un cours (et _because_ COVID19), je veux proposer à chaque �
 
 Voici le schéma de l'organisation.
 
-![Illustration laboratoire virtuel](/assets/img/lab.png "Illustration laboratoire virtuel")
+![Illustration laboratoire virtuel](assets/img/lab.png "Illustration laboratoire virtuel")
 
 [^f1]: Accord de proximité.
 

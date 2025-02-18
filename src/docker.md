@@ -27,7 +27,7 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 Docker s'exécute en _root_. Un moyen simple de donner le droit à un _user_ d'utiliser Docker est de l'ajouter au groupe `docker`. 
 
 ```bash
-~:# usermad -aG docker user
+~:# usermod -aG docker user
 ```
 :::
 
@@ -53,9 +53,10 @@ root           1  0.0  0.0   4188  3412 pts/0    Ss   07:17   0:00 bash
 root         195  100  0.0   8060  3896 pts/0    R+   07:21   0:00 ps -aux
 ```
 - la première fois, l'image doit être téléchargée avant d'être exécutée;
+- `-ti` demande de lancer le conteneur de manière interactive avec `bash` comme _shell_;
 - l'image _debian_ ne connait pas la commande `ps`, il faut l'installer;
 - le shell est le seul processus et a le PID 1;
-- un `exit` quitte _bash_ et quitte la session interactive. Le container est détruit;
+- un `exit` quitte _bash_ et quitte la session interactive. Le container est arrêté;
 
 ```bash
 $ docker ps -a                                        
@@ -72,13 +73,19 @@ Il est possible de relancer un nouveau conteneur avec la même image :
 ~:$ docker run -ti debian bash 
 ```
 
-et dans ce cas le fichier n'existe plus. Il est également possible de relancer le conteneur préalablement quitté grâce à son _container id_ : 
+et dans ce cas le fichier n'existe plus. Il est également possible de relancer le conteneur préalablement quitté grâce à son _container id_ ou son nom : 
 
 ```bash
 ~:$ docker start -ai e89b4fa490ce
 ```
 
-et dans ce cas c'est le même conteneur qui est redémarré. 
+ou 
+
+```bash
+~:$ docker start -ai lucid_lovelace
+```
+
+et dans ce cas c'est le même conteneur qui est redémarré et les données se trouvant dans le conteneur s'y trouvent toujours. 
 
 :::info
 Il n'est pas nécessaire d'écrire tous les chiffres du _container id_, seuls ceux permettant de différencier deux containers sont utiles. 
@@ -124,7 +131,29 @@ Driver par défaut. L'adresse IP n'est pas routable. Il est nécessaire de _nate
 
 ```bash
 ~:$ docker run -ti nginx bash 
-TODO ip a 
+Unable to find image 'nginx:latest' locally 
+latest: Pulling from library/nginx
+c29f5b76f736: Pull complete
+e19db8451adb: Pull complete
+24ff42a0d907: Pull complete
+c558df217949: Pull complete 
+976e8f6b25dd: Pull complete 
+6c78b0ba1a32: Pull complete
+84cade77a831: Pull complete
+Digest: sha256:917[cut]>34   
+Status: Downloaded newer image for nginx:latest
+root@da5131be4ef1:/# apt update && apt install iproute2
+root@da5131be4ef1:/# ip a 
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+40: eth0@if41: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
 ```
 
 En l'état, le conteneur est inutile. 
@@ -133,26 +162,35 @@ En l'état, le conteneur est inutile.
 - Détachons le conteneur pour que le service _nginx_ soit disponible (et plus un shell `bash`)
 
 ```bash 
-~:$ docker run -p 80:80 -d nginx 
-TODO
+~:$ docker run -d  -p 80:80 nginx  
+75a9ae27b43[cut]0e92df3f506f92b
+:~$ curl -I localhost 
+HTTP/1.1 200 OK
+Server: nginx/1.27.4
+Date: Tue, 18 Feb 2025 14:18:43 GMT
+Content-Type: text/html
+Content-Length: 615
+Last-Modified: Wed, 05 Feb 2025 11:06:32 GMT
+Connection: keep-alive
+ETag: "67a34638-267"
+Accept-Ranges: bytes
 ```
 
-```bash 
-~:$ curl -I localhost
-TODO
-```
 - fait une requête `http` sur la machine locale, sur son port 80. Le port 80 est redirigé par docker sur le port 80 du conteneur. 
 
 ```bash
 ~:$ docker ps
-TODO
+$ docker ps 
+CONTAINER ID IMAGE COMMAND                  CREATED       STATUS PORTS  NAMES
+75a9ae27b43b nginx "/docker-entrypoint.…"   4 minutes ago Up 4 minutes  0.0.0.0:80->80/tcp, :::80->80/tcp  amazing_morse
 ```
 - montre les conteneurs dont le conteneur nginx actif
 
 :::warning
 Il sera nécessaire de supprimer le conteneur qui monopolise le port 80. 
 ```bash
-~:$ docker rm -f <ID>
+~:$ docker rm -f <ID | NAME>
+~:$ docker rm -f amazing_morse
 ```
 :::
 
@@ -160,42 +198,61 @@ Il sera nécessaire de supprimer le conteneur qui monopolise le port 80.
 
 Cette fois, le driver utilisé doit être préciser _via_ `--net=host` et c'est bien la pile réseau de l'hôte qui est utilisée. 
 
+161141  docker run --rm --net=host -d nginx
+161142  docker ps 
+161143  curl -I localhost
+161144  docker help 
+161145  docker ps 
+161146  docker stop hungry_mcclintock
+161147  docker ps -a
+161148  history 
+
+
+
 ```bash
-~:$ docker run --net=host -d nginx
+~:$ docker run --rm --net=host -d nginx
 ```
+- `--rm` supprimera automatiquement le conteneur lorsqu'il sera arrêté
 
 ```bash
 ~:$ docker ps
-TODO
+CONTAINER ID IMAGE COMMAND                  CREATED          STATUS PORTS NAMES        
+4120242817eb nginx "/docker-entrypoint.…"   29 seconds ago   Up 29 seconds      hungry_mcclinTock  
 ```
 - la colonne port ne contient plus d'information de _nating_
+- `docker stop hungry_mcclintock` stoppe le conteneur et le supprime (puisqu'il avait été créé avec l'option `--rm`)
 
 ### macvlan
 
-Il est nécessaire de créer un réseau associé à la carte reseaux de l'hôte
+Il est nécessaire de créer un réseau associé à la carte reseau de l'hôte
 
 ```bash
 ~:$ docker network create -d macvlan --subnet=172.16.0.0/16 --gateway=172.16.0.1 -o parent=eth0 public
-TODO
+afd81863b538[cut]ad1b78e7dcd210fb
 ```
 
-Le réseau devrait apparaitre dans la liste des réseaux _via_ `docker network list`
-
-Lançon un conteneur utilisant ce réseau (et faisant un petit dodo)
+Le réseau devrait apparaitre dans la liste des réseaux _via_ `docker network ls`
 
 ```bash
-~:$ docker run -d --net=public debian sleep 3600
+NETWORK ID     NAME   DRIVER    SCOPE
+afd81863b538   public macvlan   local
 ```
 
-```bash
-~:$ docker ps
-```
-
+Lançon un conteneur utilisant ce réseau (et faisant un petit dodo) et exécutons la commande `ip address` au sein de celui-ci. 
 
 ```bash
-~:$ docker exec <name> <command>
-~:$ docker exec blaa ip a
-~:$ docker inspect <name>
+~:$ docker run -d --net=public alpine sleep 3600
+~:$ docker exec modest_lehmann ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+53: eth0@if2: <NO-CARRIER,BROADCAST,MULTICAST,UP,M-DOWN> mtu 1500 qdisc noqueue state LOWERLAYERDOWN 
+    link/ether 02:42:ac:10:00:02 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.0.2/16 brd 172.16.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
 ```
 
 ## Persistance 

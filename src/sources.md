@@ -24,6 +24,8 @@
 
 [minicom serial communication program](https://www.cyberciti.biz/tips/connect-soekris-single-board-computer-using-minicom.html) (_consulté le 10 fév. 2025_)
 
+[The twelve factors](https://12factor.net/) (_consulté le 16 fév. 2025_)
+
 
 
 

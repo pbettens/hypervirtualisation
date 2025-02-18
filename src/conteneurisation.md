@@ -1,5 +1,7 @@
 # Conteneurisation
 
+## Introduction
+
 > Un **conteneur** (_container_) est une forme légère de virtualisation où l'on encapsule uniquement ce qui est nécessaire à l'application. Le conteneur est exécuté sur le système hôte.
 
 > Il n'y a pas de système d'exploitation à proprement dit dans un conteneur. Uniquement les binaires et les bibliothèques (_libraries_) nécessaires. 
@@ -10,7 +12,7 @@ Au départ, des outils linux
 - _BSD jail_ (2000) amélioration du `chroot` en séparant également les processus, les utilisateurs et le réseau. Les processus se trouvent dans une _sandbox_ (bac à sable).
 - _namespace_ (2002) est une fonctionnalisé du noyau (_kernel_) qui séparent les ressources de manière telle qu'un ensemble de processus voient un ensemble de ressources tandis qu'un autre ensemble de processus voit un autre ensemble de ressource. Les _namespaces_ permettent une isolation des processus. 
 - _cgroups_ (2007) pour **c**ontrol **groups** limitent les ressources (CPU, mémoire, IO, réseau…) disponibles pour un processus. Les _cgroups_ ont été initiés par Google (2006) avant d'être intégré au noyau linux >2.6.24
-- LXC (2008) pour **l**inu**x** **c**ontainers combinent les _cgroups_ et les _namespaces_… et souffrent de 
+- LXC (2008) pour **l**inu**x** **c**ontainers combinent les _cgroups_ et les _namespaces_… et souffrent de problème de sécurité. 
 
 Quelques projets (VServer, OpenVZ, Warden, LMCTFY _let my contain that for you_) ont vécus et ont été vaincus par Docker. 
 
@@ -25,3 +27,139 @@ Quelques fonctionnalités de Docker : 
 - un dépôt d'images _Docker Registry_ pour partager ses images;
 - un fichier _Docker-compose_ définissant une application multi-conteneurs en un fichier YAML.
 
+## Un (pré)-conteneur à l'ancienne
+
+TODO à compléter
+
+Un conteneur se base sur les _namespaces_ et les _cgroups_ disponibles dans un noyau linux. À partir de ces deux technologies, il doit être possible de créer un conteneur. 
+
+```bash
+~:# unshare --fork --pid --mount-proc bash 
+~:# ps -ef 
+TODO
+```
+
+Crée un _namespace_ tel que : 
+- le _process id_ (PID) devient le PID 1 sans autre processus;
+- le processus peut utiliser n'importe quel port sans entrer en conflit avec d'autres ports utilisés;
+- peut monter (et démonter) des systèmes de fichiers sans affecter ceux de l'hôte;
+
+```bash
+~:# cgcreate -a TODO -g memory:TODO
+~:# ls -l /sys/fs/cgroup/memory/TODO
+~:# echo 10000000 > /sys/fs/cgroup/memory/TODO/memory.kmem.limit_in_bytes
+~:# cgexec -g memory:TODO bash
+```
+
+Crée un _cgroup_ et le limite à 10MB. Lancer un processus demandant _un peu trop de mémoire_ sera refusé. 
+
+:::warning
+
+Nécessite l'installation du paquet `cgroup-tools`.
+
+:::
+
+## *The twelve factor app*
+
+À l'origine de la conteneurisation une méthodologie proposée par Adam Wiggins de la société Heroku pour proposer du **_software as a service_** (**saas**). 
+
+1. **Le code de base** (_codebase_) : Une version du code pour une (ou plusieurs) versions du code déployé. Quand le code change, un nouveau déploiement peut être réalisé facilement. 
+
+2. **Dépendances** (_dependencies_) : Les dépendances sont explicitement déclarées. 
+
+    Par exemple : 
+
+    ```dockerfile
+    FROM ubuntu:16.04
+
+    RUN apt update && \
+        apt install -y cosway && \\
+        apt clean
+
+    CMD ["/usr/games/cowsthink", "-f tux", "Who am I"]
+    ```
+
+3. **Configuration** : Les configurations doivent être stockées et il sera possible de stocker des valeurs dans ces variables et de les passer à l'environnement lors de l'exécution du conteneur. 
+
+4. **Services externes** (_backing services_ : Les services externes sont traités comme des ressources attachées. 
+
+5. **Build, release and run** (_build, release, run_) : L'image construite est clairement séparée de son exécution. 
+
+6. **Processus** (_processes_)_:  les applications sont sans états (_stateless_). La persistence est assurée par des services _backend_. 
+
+    :::info stateless versus statefull
+    Un processus **_statefull_** va garder un status en mémoire tandis qu'un service **_stateless_** ne conserve rien ; il peut être supprimé et recrée sans qu'aucune information ne soit perdue. 
+    :::
+
+7. **Association de ports** (_port binding_) ou encore _port mapping_ permet de lier un port de l'hôte à un port du conteneur. 
+
+8. **Concurrence** (_concurrency_) : la mise à l'échelle (_scale_) ou la montée en charge est aisée puisque un conteneur est _stateless_. Placés derrière un _load balancer_ une application peut avoir un ou plusieurs conteneurs (qui peuvent être lancés à la volée)
+
+9. **Jetable** (_disposability_) : _Maximize robustness with fast startup and graceful shutdown_. Les conteneurs peuvent être démarrés à la demande et supprimés tout aussi aisément. 
+
+10. **Parité dev/prod** (_dev/prod parity_)_ : _Keep development, staging, and production as similar as possible. Un conteneur est l'exécution d'une image. Cette image ne change pas. 
+
+11. **Logs** (_logs_) : Les logs sont des _flux d'évènements_ qui peuvent être lus à l'extérieur du conteneur. 
+
+12. **Processus d'administration** (_admin processus_) : _Run admin/management tasks as one-off processes._ Ces tâches doivent être lancées à l'extérieur du conteneur. 
+
+## Conteneur *versus* machine virtuelle 
+
+Si l'on compare une **machine virtuelle** à une maison qui a une infrastructure propre pour l'eau, l'électricité… et un ensemble de pièces qui la constituent. Que l'on veuille une grande, très grande ou toute petite maison, on a toutes les pièces de la maison. On peut comparer un **conteneur** à une seule pièce de la maison  — dont on peut faire ce que l'on veut : une chambre, un petit bureau ou encore un grand loft — qui peut bénéficier des ressources de la maison comme l'eau, l'électricité…
+
+Comme un nouvelle instance d'un conteneur n'a pas besoin d'un nouveau système d'exploitation, un conteneur génère moins d'_overhead_ (mémoire, CPU, I/O.)
+
+:::info
+
+Un conteneur porte ce nom par analogie aux conteneurs maritimes qui peuvent contenir des choses fort différentes mais qui ont tous le même format leur permettant d'être acheminer sur n'importe quel moyen de transport. 
+
+Fini le  : _Chez moi, ça marche !_
+
+:::
+
+L'idée de la conteneurisation est de ne prendre que les _binaires_ et les bibliothèques (_libraries_) nécessaires à l'application et des les transporter dans une enveloppe — le conteneur — qu'en _container runtime_ (comme Docker) pourra exécuter. 
+
+:::warning
+
+Un **_container runtime_** permet : 
+- l'exécution du conteneur (_run_);
+- la création d'une image (_build_);
+- la gestion des ces images (_images, rm_);
+- la gestion des différentes instances de conteneurs (_ps, rm_);
+- le partage d'images (_push, pull_).
+
+Le _container runtime_ a un format propre. 
+
+:::
+
+Les conteneurs se basent sur les _namespaces_ et les _cgroups_ : le _namespace_ définit ce que le processus peut voir tandis que les _cgroups_, ce à quoi il a droit (CPU, RAM, I/O, etc.).
+
+## Conteneur et image
+
+> Un conteneur n'est pas une image et une image n'est pas un conteneur. 
+
+L'image est au programme ce que le conteneur est au processus : une image est un ensemble de fichiers tandis qu'un conteneur est une exécution d'une image. 
+
+Une fois que l'on dispose d'une image on peut : 
+
+- l'exécuter, 
+- la partager. 
+
+Pour la partager, on utilise un _registry_ comme _dockerhub_ et le partage d'une image est aussi simple qu'un `push` et un `pull`. 
+
+:::warning
+
+Il également techniquement possible d'en faire un `tar` et de le partager mais ce n'est pas l'habitude. 
+
+::: 
+
+Par rapport à une machine virtuelle, un conteneur change la manière de faire : 
+
+- là où les services (`http` par exemple) tournaient en arrière plan, ils restent en avant plan dans un conteneur;
+- les _logs_ quant-à eux sont simplement envoyés, tous, sur `stdout`. 
+
+:::info À LIRE AUSSI
+
+[Docker](/docker)
+
+:::

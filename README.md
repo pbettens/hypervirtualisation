@@ -13,20 +13,17 @@ _Hypervirtualisation ou virtualisation mais sûrement pas hypervision_
 
 ## Publication
 
-Utilisation (en test) d'**eleventy** (_**11ty**_) pour la publication. 
+Une première version a utilisé _eleventy_ (_11ty_). Actuellement, la publication se fait grâce à **vitepress**. 
+
+La configuration se trouve dans `.vitepress/config.mts` et les fichiers sources dans `src`. Une action github met les pages à disposition à  
+[pbettens.github.io/hypervirtualisation](https://pbettens.github.io/hypervirtualisation)
+
+Pour tester localement : 
 
 ```
-npm start 
-npm build
+npm install 
+npm run dev
 ```
-voir `package.json` 
 
-Le fichier de configuration : `eleventy.config.ts`.
 
-## EN COURS
-
-- faire les clés usb
-    - 5 x >5Gb pour _debian live_
-    - 2 x > TODO pour VMWare
-    - 2 x > TODO pour Proxmox
 

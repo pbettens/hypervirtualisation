@@ -42,7 +42,7 @@ _(Cette liste sera construite au fur et à mesure du cours)_
 |Matériel       |Reconnaissance du matériel. État des lieux| 🔲 |
 |Installation   |Installation de l'hyperviseur| 🔲 |
 |Accessibilité  |L'hyperviseur est accessible en ssh et à distance au sein du local. À chaque groupe est associé un VLAN.  La configuration réseau est opérationnelle| 🔲 |
-|Rack           |L'hyperviseur est dans le rack | 🔲 |
+|Rack           |L'hyperviseur est dans le rack (selon les possibilités) | 🔲 |
 |Services       |Au minimum deux services tournent sur 2 machines virtuelles différentes | 🔲 |
 |SAN            |Installation d'un SAN (@todo)  | 🔲 |
 |Migration      |Une migration d'une machine est possible d'un hyperviseur à un autre| 🔲 |
@@ -52,4 +52,9 @@ _(Cette liste sera construite au fur et à mesure du cours)_
 |   || 🔲 |
 
 
+## Aspects pratiques et réseaux
 
+Range d'IP : `172.X.0.0/16` où `16 ≤ X ≤ 31` en fonction du groupe.  
+_Default gateway_ : `172.X.0.1` et le routeur fait le routage nécessaire. 
+
+![](assets/img/schema-organisation.webp)

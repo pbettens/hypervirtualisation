@@ -26,7 +26,9 @@
 
 [The twelve factors](https://12factor.net/) (_consulté le 16 fév. 2025_)
 
+[Database guide on Docker](https://docs.docker.com/guides/databases/) (_consulté le 18 fév. 2025_)
 
+[Containers from scratch](http://ericchiang.github.io/post/containers-from-scratch) - Utilise _cgroup v1_ et pas _v2_ (_consulté le 18 fév. 2024_)
 
 
 [qemu]:http://wiki.qemu.org/Main_Page

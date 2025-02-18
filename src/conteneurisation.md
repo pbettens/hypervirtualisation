@@ -35,8 +35,10 @@ Un conteneur se base sur les _namespaces_ et les _cgroups_ disponibles dans un n
 
 ```bash
 ~:# unshare --fork --pid --mount-proc bash 
-~:# ps -ef 
-TODO
+~:# ps aux
+USER  PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root    1  0.2  0.0   8208  4944 pts/21   S    14:10   0:00 bash
+root    9  0.0  0.0  11256  4760 pts/21   R+   14:10   0:00 ps aux
 ```
 
 Crée un _namespace_ tel que : 
@@ -45,13 +47,13 @@ Crée un _namespace_ tel que :
 - peut monter (et démonter) des systèmes de fichiers sans affecter ceux de l'hôte;
 
 ```bash
-~:# cgcreate -a TODO -g memory:TODO
-~:# ls -l /sys/fs/cgroup/memory/TODO
-~:# echo 10000000 > /sys/fs/cgroup/memory/TODO/memory.kmem.limit_in_bytes
-~:# cgexec -g memory:TODO bash
+~:# cgcreate -a user -g memory:my-group
+~:# ls -l /sys/fs/cgroup/my-group
+~:$ echo 10000000 > /sys/fs/cgroup/my-group/memory.max 
+~:# cgexec -g memory:my-group bash
 ```
 
-Crée un _cgroup_ et le limite à 10MB. Lancer un processus demandant _un peu trop de mémoire_ sera refusé. 
+Crée un _cgroup_ et le limite à 10MB. Lancer un processus demandant _un peu trop de mémoire_ sera refusé. Un simple `apt update` prend un « temps anormalement long ». 
 
 :::warning
 
@@ -70,7 +72,7 @@ Nécessite l'installation du paquet `cgroup-tools`.
     Par exemple : 
 
     ```dockerfile
-    FROM ubuntu:16.04
+    FROM debian
 
     RUN apt update && \
         apt install -y cosway && \\

@@ -198,17 +198,6 @@ Il sera nécessaire de supprimer le conteneur qui monopolise le port 80.
 
 Cette fois, le driver utilisé doit être préciser _via_ `--net=host` et c'est bien la pile réseau de l'hôte qui est utilisée. 
 
-161141  docker run --rm --net=host -d nginx
-161142  docker ps 
-161143  curl -I localhost
-161144  docker help 
-161145  docker ps 
-161146  docker stop hungry_mcclintock
-161147  docker ps -a
-161148  history 
-
-
-
 ```bash
 ~:$ docker run --rm --net=host -d nginx
 ```
@@ -220,7 +209,29 @@ CONTAINER ID IMAGE COMMAND                  CREATED          STATUS PORTS NAMES
 4120242817eb nginx "/docker-entrypoint.…"   29 seconds ago   Up 29 seconds      hungry_mcclinTock  
 ```
 - la colonne port ne contient plus d'information de _nating_
-- `docker stop hungry_mcclintock` stoppe le conteneur et le supprime (puisqu'il avait été créé avec l'option `--rm`)
+
+```
+:~$ curl -I localhost 
+HTTP/1.1 200 OK
+Server: nginx/1.27.4
+Date: Tue, 18 Feb 2025 14:18:43 GMT
+Content-Type: text/html
+Content-Length: 615
+Last-Modified: Wed, 05 Feb 2025 11:06:32 GMT
+Connection: keep-alive
+ETag: "67a34638-267"
+Accept-Ranges: bytes
+```
+- cette fois `curl` interroge l'hôte et l'hôte partage sa pile réseau… et son port 80.
+
+`docker stop hungry_mcclintock` stoppe le conteneur et le supprime (puisqu'il avait été créé avec l'option `--rm`)
+
+:::warning 
+Il est possible de voir les logs d'un conteneur et dans ce cas les logs du serveur `nginx` _via_ 
+```bash 
+~:$ docker logs <ID | NAME>
+```
+:::
 
 ### macvlan
 
@@ -377,5 +388,6 @@ Lancer l'image nouvellement créée se fait par :
 ```
 
 :::info À LIRE AUSSI / SOURCE
-[Database guide on Docker](https://docs.docker.com/guides/databases/)
+[Database guide on Docker](https://docs.docker.com/guides/databases/)  
+[Containers from scratch](http://ericchiang.github.io/post/containers-from-scratch) Utilise _cgroup v1_ et pas _v2_.
 :::

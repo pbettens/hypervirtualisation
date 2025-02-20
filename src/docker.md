@@ -391,3 +391,87 @@ Lancer l'image nouvellement créée se fait par :
 [Database guide on Docker](https://docs.docker.com/guides/databases/)  
 [Containers from scratch](http://ericchiang.github.io/post/containers-from-scratch) Utilise _cgroup v1_ et pas _v2_.
 :::
+
+## Créer ses propres images
+
+Pour créer sa propre image, il est nécessaire d'écrire un fichier `Dockerfile` précisant les couches devant se trouver dans l'image. 
+
+Par exemple : 
+
+```dockerfile
+FROM debian
+RUN apt update && apt install -y nginx
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD nginx -g 'daemon off;'
+```
+- la première couche est une `debian` (bcp utilise _ubuntu_ car l'image est plus légère);
+- la deuxième couche et commande `RUN` installe `nginx`;
+- il faut ensuite copier le fichier `index.html` — se trouvant dans le répertoire courant — dans l'image;
+- préciser que l'on expose le port 80 et lancer `nginx` en avant-plan (_foreground_). 
+
+Dans le répertoire courant doit se trouver un fichier `index.html` contenant la page à afficher. 
+
+Dans le répertoire courant, construire l'image _via_ : 
+
+```bash
+docker build -t first-image:v01 .                                   
+[+] Building 13.4s (8/8) FINISHED                               docker:default
+ => [internal] load build definition from Dockerfile            0.0s
+ => => transferring dockerfile: 156B                            0.0s
+ => WARN: JSONArgsRecommended: JSON arguments recommended for…  0.0s
+ => [internal] load metadata for docker.io/library/debian:latest0.0s
+ => [internal] load .dockerignore                               0.0s   
+ => => transferring context: 2B                                 0.0    
+ => [1/3] FROM docker.io/library/debian:latest                  0.1s   
+ => [internal] load build context                               0.1s
+ => => transferring context: 31B                                0.0s    
+ => [2/3] RUN apt update && apt install -y nginx               12.3s  
+ => [3/3] COPY index.html /var/www/html/                        0.2s   
+ => exporting to image                                          0.5s  
+ => => exporting layers                                         0.5s   
+ => => writing image sha256:9cebb3[cut]d53a86e2                 0.0s  
+ => => naming to docker.io/library/first-image                  0.0s 
+ 1 warning found (use docker --debug to expand): 
+ - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 5)
+ ```
+
+L'image est créée : 
+
+```bash
+~:$ docker images                                 
+REPOSITORY     TAG  IMAGE ID      CREATED          SIZE            
+first-image    v0:1 9cebb3c3bac6  42 seconds ago   154MB     
+```
+
+Il reste à lancer l'image et à la tester : 
+
+```bash
+~:$ docker run  -d -p 80:80 first-image:v01
+dbc680[cut]8a646c8a4424aefd8bfb3
+~:$ curl localhost
+Yet another hello world
+```
+
+:::warning
+Ici l'image porte le _tag_ `v0.1`. Pour ajouter le _tag_ `latest`… ajouter le _tag_ avec : 
+```bash 
+docker tag first-image:v0.1 first-image:latest
+```
+:::
+
+`docker images` montre l'image avec toutes ses versions. Pour reconstruire l'image après un petit changement, `docker build -t first-image:v0.2 .` fera l'affaire et docker utilisera un **cache** et ne reconstruira que les parties modifiées. Le _build_ sera plus rapide. 
+
+Pour avoir une image plus petite, c'est mieux d'utiliser la distribution **alpine** au lieu de debian. Dans ce cas, de Dockerfile devient : 
+
+```dockerfile
+FROM alpine
+RUN apk update && apk add nginx
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD nginx -g 'daemon off;'
+```
+
+… et l'image passe de 154MB à 6,74MB ce qui n'est pas négligeable. 
+
+

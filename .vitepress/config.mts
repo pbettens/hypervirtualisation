@@ -35,7 +35,7 @@ export default defineConfig({
             { text: 'Bridge', link: '/bridge'},
             { text: 'LVM', link: '/lvm'},
             { text: 'NFS', link: '/nfs'},
-            { text: 'iSCI', link: '/icsi'},
+            { text: 'iSCI', link: '/isci'},
             { text: 'Docker', link: '/docker'}
         ]
       },

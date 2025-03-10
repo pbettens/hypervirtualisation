@@ -175,7 +175,6 @@ Connection: keep-alive
 ETag: "67a34638-267"
 Accept-Ranges: bytes
 ```
-
 - fait une requête `http` sur la machine locale, sur son port 80. Le port 80 est redirigé par docker sur le port 80 du conteneur. 
 
 ```bash
@@ -184,7 +183,7 @@ $ docker ps
 CONTAINER ID IMAGE COMMAND                  CREATED       STATUS PORTS  NAMES
 75a9ae27b43b nginx "/docker-entrypoint.…"   4 minutes ago Up 4 minutes  0.0.0.0:80->80/tcp, :::80->80/tcp  amazing_morse
 ```
-- montre les conteneurs dont le conteneur nginx actif
+- montre les conteneurs dont le conteneur `nginx` actif
 
 :::warning
 Il sera nécessaire de supprimer le conteneur qui monopolise le port 80. 
@@ -196,7 +195,7 @@ Il sera nécessaire de supprimer le conteneur qui monopolise le port 80.
 
 ### host
 
-Cette fois, le driver utilisé doit être préciser _via_ `--net=host` et c'est bien la pile réseau de l'hôte qui est utilisée. 
+Cette fois, le driver utilisé doit être précisé _via_ `--net=host` et c'est bien la pile réseau de l'hôte qui est utilisée. 
 
 ```bash
 ~:$ docker run --rm --net=host -d nginx
@@ -249,7 +248,7 @@ NETWORK ID     NAME   DRIVER    SCOPE
 afd81863b538   public macvlan   local
 ```
 
-Lançon un conteneur utilisant ce réseau (et faisant un petit dodo) et exécutons la commande `ip address` au sein de celui-ci. 
+Lançons un conteneur utilisant ce réseau (et faisant un petit dodo) et exécutons la commande `ip address` au sein de celui-ci. 
 
 ```bash
 ~:$ docker run -d --net=public alpine sleep 3600
@@ -268,7 +267,7 @@ Lançon un conteneur utilisant ce réseau (et faisant un petit dodo) et exécuto
 
 ## Persistance 
 
-La bonne pratique est que les conteneurs soit _stateless_ et donc sans persistance des données. Les données ne devraient pas se trouver **dans* le conteneur. Où les stocker ?
+La bonne pratique est que les conteneurs soient _stateless_ et donc sans persistance des données. Les données ne devraient pas se trouver **dans** le conteneur. Où les stocker ?
 
 ### Les données stockées sur l'hôte
 
@@ -313,7 +312,8 @@ Pour tester, supprimer l'image avec `docker remove -f <id | name>` et la recrée
 :::
 
 :::warning
-Pour se connecter à partir l'un autre conteneur, mettre les conteneur dans le même réseau _via_ `--network <network name>` ou `--net=<network name>`.
+Pour se connecter à partir d'un autre conteneur, mettre les conteneur dans le même réseau _via_   
+`--network <network name>` ou `--net=<network name>`.
 :::
 
 Les données sont stockées dans le conteneur et sont supprimées si le conteneur est supprimé. Attacher un volume permet de les conserver. 
@@ -405,7 +405,7 @@ COPY index.html /var/www/html/
 EXPOSE 80
 CMD nginx -g 'daemon off;'
 ```
-- la première couche est une `debian` (bcp utilise _ubuntu_ car l'image est plus légère);
+- la première couche est une `debian` (beaucoup utilisent _ubuntu_ car l'image est plus légère);
 - la deuxième couche et commande `RUN` installe `nginx`;
 - il faut ensuite copier le fichier `index.html` — se trouvant dans le répertoire courant — dans l'image;
 - préciser que l'on expose le port 80 et lancer `nginx` en avant-plan (_foreground_). 
@@ -462,7 +462,7 @@ docker tag first-image:v0.1 first-image:latest
 
 `docker images` montre l'image avec toutes ses versions. Pour reconstruire l'image après un petit changement, `docker build -t first-image:v0.2 .` fera l'affaire et docker utilisera un **cache** et ne reconstruira que les parties modifiées. Le _build_ sera plus rapide. 
 
-Pour avoir une image plus petite, c'est mieux d'utiliser la distribution **alpine** au lieu de debian. Dans ce cas, de Dockerfile devient : 
+Pour avoir une image plus petite, c'est mieux d'utiliser la distribution **alpine** au lieu de debian. Dans ce cas, le Dockerfile devient : 
 
 ```dockerfile
 FROM alpine

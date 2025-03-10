@@ -29,9 +29,9 @@ Quelques fonctionnalités de Docker : 
 
 ## Un (pré)-conteneur à l'ancienne
 
-TODO à compléter
-
 Un conteneur se base sur les _namespaces_ et les _cgroups_ disponibles dans un noyau linux. À partir de ces deux technologies, il doit être possible de créer un conteneur. 
+
+### *namespace* 
 
 ```bash
 ~:# unshare --fork --pid --mount-proc bash 
@@ -46,6 +46,8 @@ Crée un _namespace_ tel que :
 - le processus peut utiliser n'importe quel port sans entrer en conflit avec d'autres ports utilisés;
 - peut monter (et démonter) des systèmes de fichiers sans affecter ceux de l'hôte;
 
+### *cgroup*
+
 ```bash
 ~:# cgcreate -a user -g memory:my-group
 ~:# ls -l /sys/fs/cgroup/my-group
@@ -53,7 +55,9 @@ Crée un _namespace_ tel que :
 ~:# cgexec -g memory:my-group bash
 ```
 
-Crée un _cgroup_ et le limite à 10MB. Lancer un processus demandant _un peu trop de mémoire_ sera refusé. Un simple `apt update` prend un « temps anormalement long ». 
+Crée un _cgroup_ et le limite à 10MB. Lancer un processus demandant _un peu trop de mémoire_ sera refusé. 
+
+Par exemple, un simple `apt update` prend un « temps anormalement long ». 
 
 :::warning
 

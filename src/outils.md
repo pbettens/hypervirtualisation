@@ -68,9 +68,14 @@ Sous linux, il existe plusieurs programmes (dont `putty` _by the way_). Par exem
 Sa configuration se fait _via_ `minicom -s`.
 
 ![Interface de configuration de minicom](assets/img/minicom-setup.png "interface de configuration de minicom") 
+
 ![Choix du périphérique et de la vitesse](assets/img/minicom-setup-2.png "interface de configuration de minicom")
 
 Une fois la configuration faite, lancer `minicom` (sans paramètre cette fois).
+
+:::tip 
+Il est également possible d'utiliser `minicom` sans le configurer en passant l'interface en argument avec l'option `-D`. 
+:::
 
 
 

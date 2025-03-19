@@ -11,6 +11,7 @@ _Hypervirtualisation ou virtualisation mais sûrement pas hypervision <i class="
 [Le réseau](reseaux.md)  
 [Le stockage](stockage.md)  
 [Introduction à la conteneurisation](conteneurisation.md)  
+[Virtualisation (un peu plus) avancée](virtualisation-2.md)  
 [Automatisation](ansible.md)
 
 ### Ressources diverses

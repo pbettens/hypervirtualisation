@@ -25,6 +25,7 @@ export default defineConfig({
           { text: 'Réseau', link: '/reseaux' },
           { text: 'Stockage', link:  '/stockage'},
           { text: 'Conteneurisation', link: '/conteneurisation'},
+          { text: 'Virtualisation 2', link: 'virtualisation-2'},
           { text: 'Automatisation (Ansible)', link: '/ansible'}
         ]
       },

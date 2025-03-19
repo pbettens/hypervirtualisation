@@ -47,6 +47,7 @@ _(Cette liste sera construite au fur et à mesure du cours)_
 |Services       |Au minimum deux services internet tournent sur 2 machines virtuelles différentes [^f1]. | 🔲 |
 |Conteneur      |Déploiement d'au moins 2 conteneurs (avec un service)| 🔲 |
 |SAN            |Installation d'un SAN par groupe-classe (chaque personne de chaque équipe est capable d'agir sur le SAN)<br/>Au moins un des services a son _storage_ sur le SAN.   | 🔲 |
+|Cluster        | Mettre au moins deux hyperviseurs en _cluster_ (un sous-groupe avec un autre sous-groupe) | 🔲 |
 |Migration      |Une migration d'une machine est possible d'un hyperviseur à un autre.| 🔲 |
 |Ansible        |Automatisation d'une install d'une machine virtuelle avec un environnement à définir.| 🔲 |
 |   || 🔲 |

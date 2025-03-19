@@ -14,6 +14,8 @@
 
 [Proxmox, download page](https://www.proxmox.com/en/downloads) (_consulté le 27 jan. 2025_)
 
+[Proxmox documentation](https://pve.proxmox.com/pve-docs/index.html) (_consulté le 11 mar. 2025_)
+
 [Le guide le plus décalé pour comprendre Kubernetes (part. 1)](https://stephane-beuret.medium.com/le-guide-le-plus-d%C3%A9cal%C3%A9-pour-comprendre-kubernetes-part-1-101126825d8b) (_consulté le 20 jan. 2025_)
 
 [Wikipedia - Gestion par volumes logiques](https://fr.wikipedia.org/wiki/Gestion_par_volumes_logiques) (_(re)consulté le 28 janv. 2025_)
@@ -29,6 +31,8 @@
 [Database guide on Docker](https://docs.docker.com/guides/databases/) (_consulté le 18 fév. 2025_)
 
 [Containers from scratch](http://ericchiang.github.io/post/containers-from-scratch) - Utilise _cgroup v1_ et pas _v2_ (_consulté le 18 fév. 2024_)
+
+[Next - Proxmox VE : créer un cluster, gérer la haute disponibilité et les migrations (live)](https://next.ink/2057/promox-ve-creer-cluster-gerer-haute-disponibilite-et-migrations-live/) (_consulté le 11 mar. 2025_)
 
 
 [qemu]:http://wiki.qemu.org/Main_Page

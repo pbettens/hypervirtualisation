@@ -5,9 +5,7 @@
 _Hypervirtualisation ou virtualisation mais sûrement pas hypervision_
 
 [Organisation](src/organisation.md)
-[Introduction à la virtualisation](src/virtualisation.md)
-[Introduction à la conteneurisation](src/conteneurisation.md)
-
+[Support en ligne](src/home.md)
 
 [Sources](src/sources.md)
 
@@ -25,5 +23,23 @@ npm install
 npm run dev
 ```
 
+## Serveur proxmox VE 
 
+Installation perso et démo d'un Proxmox. 
+
+|Hyperviseur ||
+|--|--
+| IP                | 192.168.217.251/18    |
+| IP interface web  | 192.168.217.251:8006  |
+| _Credentials_     | _root / system_       |
+|                   | _vaiana / vaiana_     |
+
+|_vm_||
+|--|--
+|IP                 | 192.168.217.251/18
+
+
+221-240
+241-255
+- installation sans histoire
 

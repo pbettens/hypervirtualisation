@@ -462,6 +462,7 @@ docker tag first-image:v0.1 first-image:latest
 
 `docker images` montre l'image avec toutes ses versions. Pour reconstruire l'image après un petit changement, `docker build -t first-image:v0.2 .` fera l'affaire et docker utilisera un **cache** et ne reconstruira que les parties modifiées. Le _build_ sera plus rapide. 
 
+:::tip 
 Pour avoir une image plus petite, c'est mieux d'utiliser la distribution **alpine** au lieu de debian. Dans ce cas, le Dockerfile devient : 
 
 ```dockerfile
@@ -473,5 +474,5 @@ CMD nginx -g 'daemon off;'
 ```
 
 … et l'image passe de 154MB à 6,74MB ce qui n'est pas négligeable. 
-
+:::
 

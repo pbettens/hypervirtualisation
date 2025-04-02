@@ -164,6 +164,43 @@ Par rapport à une machine virtuelle, un conteneur change la manière de faire�
 - là où les services (`http` par exemple) tournaient en arrière plan, ils restent en avant plan dans un conteneur;
 - les _logs_ quant-à eux sont simplement envoyés, tous, sur `stdout`. 
 
+
+## Cas particulier des conteneurs LXC
+
+:::warning
+Sur proxmox, les conteneurs ne sont pas gérés par _docker_ mais sont de simples conteneurs LXC. Ils sont plus vus comme des « conteneurs systèmes » (_system containers_) plutôt que comme des « conteneurs applicatifs » (_app containers_).
+:::
+
+Avant de lancer un conteneur, il est nécessaire de télécharger l'un ou l'autre _template_. Ça se fait _via_ l'interface web
+
+![](assets/img/proxmox-gui-ct-0.webp)
+
+![](assets/img/proxmox-gui-ct.webp)
+
+Il sera alors possible de créer un conteneur et de le lancer. 
+
+Par défaut les conteneurs sont basiques et proposent principalement des distributions linux. Pour avoir des conteneurs plus complets, on peut utiliser le projet [Turnkey Linux](https://www.turnkeylinux.org/). 
+
+Pour accéder aux images du projet, mettre à jour la base de _templates_ des conteneurs _via_ `pveam update`. Ensuite, les nouveaux templates devraient apparaitre. 
+
+### Docker *work arround* 
+
+Si l'on veut impérativement utiliser docker (principalement pour sa base d'images et la facilité de ses _dockerfiles_), il est possible de 
+
+- installer un conteneur alpine par exemple, **avec les options _nesting_ et _keyctl_**;
+- installer docker et l'image désirée 
+
+:::danger
+Ne pas installer docker sur l'hyperviseurs « en-dessous » de proxmox. 
+
+— Pourquoi ?  
+— Si j'utilise Proxmox pour la virtualisation, j'évite de mettre d'autres services car ça peut être un faille de sécurité. Proxmox va permettre le **migration** de conteneurs que je n'aurai pas sans Proxmox ainsi que la haute disponibilité (**HA**).
+::: 
+
+
+
+
+
 :::info À LIRE AUSSI
 
 [Docker](/docker)

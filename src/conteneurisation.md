@@ -183,6 +183,69 @@ Par défaut les conteneurs sont basiques et proposent principalement des distrib
 
 Pour accéder aux images du projet, mettre à jour la base de _templates_ des conteneurs _via_ `pveam update`. Ensuite, les nouveaux templates devraient apparaitre. 
 
+
+### Créer un template custom
+
+_Transcript via copilot d'une [vidéo Youtube](https://www.youtube.com/watch?v=hxmXOamsuIg) livré en brut et à revoir_
+
+----
+
+Pour créer un template LXC personnalisé sous Proxmox, voici les étapes principales :
+
+1. **Créer et personnaliser un conteneur**  
+   - Déployez un conteneur LXC basé sur une image existante (par exemple, Ubuntu ou Debian).  
+   - Connectez-vous au conteneur via la console et effectuez les personnalisations nécessaires. Par exemple :  
+     - Créez des fichiers spécifiques (`test.txt` avec un message comme "Hello Proxmox").  
+     - Installez des applications légères comme `cowsay` :  
+       ```bash
+       apt install cowsay
+       ```
+       Vous pouvez tester l'application avec une commande comme :  
+       ```bash
+       cowsay "Votre message ici"
+       ```
+
+2. **Éteindre le conteneur**  
+   Une fois les personnalisations terminées, éteignez le conteneur :  
+   ```bash
+   pct shutdown <ID_du_conteneur>
+   ```
+
+3. **Cloner et convertir en template**  
+   - Clonez le conteneur pour en créer une copie :  
+     - Donnez un nom explicite au clone (par exemple, `ubuntu-cow-template`).  
+   - Convertissez le clone en template via l'interface graphique de Proxmox ou avec la commande suivante :  
+     ```bash
+     pct convert <ID_du_clone> --template
+     ```
+
+4. **Créer un template exportable**  
+   Si vous souhaitez rendre le template portable :  
+   - Supprimez l'interface réseau du conteneur pour éviter les conflits :  
+     ```bash
+     rm /etc/network/interfaces
+     ```
+   - Générez une archive du conteneur avec `vzdump` :  
+     ```bash
+     vzdump <ID_du_conteneur> --dumpdir /var/lib/vz/template/cache --compress gzip --mode stop
+     ```
+   - Renommez l'archive pour qu'elle soit facilement identifiable :  
+     ```bash
+     mv /var/lib/vz/template/cache/vzdump-lxc-<ID>.tar.gz /var/lib/vz/template/cache/ubuntu-cow-template_1.0.tar.gz
+     ```
+
+5. **Déployer un conteneur depuis le template**  
+   - Depuis l'interface graphique de Proxmox, sélectionnez le template dans la liste des templates disponibles.  
+   - Configurez les paramètres (mot de passe, réseau, ressources, etc.) et déployez un nouveau conteneur.  
+
+6. **Exporter le template vers un autre environnement**  
+   - Téléchargez l'archive du template avec un outil comme `scp` ou `WinSCP`.  
+   - Importez-la dans un autre environnement Proxmox en la plaçant dans le répertoire `/var/lib/vz/template/cache`.
+
+Ce processus permet de créer des templates personnalisés réutilisables, idéaux pour des déploiements rapides et homogènes dans différents environnements (développement, test, production).
+
+----
+
 ### Docker *work arround* 
 
 Si l'on veut impérativement utiliser docker (principalement pour sa base d'images et la facilité de ses _dockerfiles_), il est possible de 

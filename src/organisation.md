@@ -42,16 +42,15 @@ _(Cette liste sera construite au fur et à mesure du cours)_
 |Matériel       |Reconnaissance du matériel et état des lieux.| 🔲 |
 |Installation   |Installation de l'hyperviseur.| 🔲 |
 |Accessibilité  |L'hyperviseur est accessible en ssh et à distance au sein du local. | 🔲 |
-|Configuration réseau  |À chaque groupe est associé un _range IP_ et un VLAN.  La configuration réseau _hyperviseur-switch-router-extérieur_ est opérationnelle.| 🔲 |
+|Configuration réseau (ou)<br/>Configuration réseau alternative  |À chaque groupe est associé un _range IP_ et un VLAN.  La configuration réseau _hyperviseur-switch-router-extérieur_ est opérationnelle.<br/>À chaque groupe est associé un _range IP_. La configuration _hyperviseur-switch-extérieur_ est opérationnelle.| 🔲 |
 |Rack           |L'hyperviseur est dans le rack (selon les possibilités). | 🔲 |
 |Services       |Au minimum deux services internet tournent sur 2 machines virtuelles différentes [^f1]. | 🔲 |
-|Conteneur      |Déploiement d'au moins 2 conteneurs (avec un service)| 🔲 |
-|SAN            |Installation d'un SAN par groupe-classe (chaque personne de chaque équipe est capable d'agir sur le SAN)<br/>Au moins un des services a son _storage_ sur le SAN.   | 🔲 |
+|Conteneur      |Déploiement d'au moins 2 conteneurs (avec un service dans chaque conteneur)| 🔲 |
+|~~SAN~~            |~~Installation d'un SAN par groupe-classe (chaque personne de chaque équipe est capable d'agir sur le SAN)<br/>Au moins un des services a son _storage_ sur le SAN.~~   | 🔲 |
 |Cluster        | Mettre au moins deux hyperviseurs en _cluster_ (un sous-groupe avec un autre sous-groupe) | 🔲 |
 |Migration      |Une migration d'une machine est possible d'un hyperviseur à un autre.| 🔲 |
-|Ansible        |Automatisation d'une install d'une machine virtuelle avec un environnement à définir.| 🔲 |
-|   || 🔲 |
-|   || 🔲 |
+|_Ansible_ (facultatif)        |_Automatisation d'une install d'une machine virtuelle avec un environnement à définir._| 🔲 |
+|Rapport   |Le rapport est disponible et complet<br/>En particulier, la liste des services, leur nom (ou à défaut leur IP) est clairement disponible.| 🔲 |
 
 [^f1]: [Liste de services web installables](https://docs.google.com/document/d/1u57PAqw5KZpO-jKE0YdORzq0XbSkMCoyncOtNzU62X4/edit?usp=sharing) Chaque groupe peut proposer d'autres services. **La liste est informative**. 
 

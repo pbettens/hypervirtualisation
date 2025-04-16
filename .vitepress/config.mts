@@ -4,7 +4,6 @@ import footnote from 'markdown-it-footnote'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Hypervirtualisation",
-  titleTemplate: 'HYP - :title',
   description: "Notes de cours",
   lang: 'fr-be',
   base: '/hypervirtualisation',
@@ -47,7 +46,7 @@ export default defineConfig({
             { text: 'Organisation', link: '/organisation'},
             { text: 'Sources', link: '/sources'}
         ]
-      },
+      }
     ],
 
     socialLinks: [
@@ -68,10 +67,6 @@ export default defineConfig({
 
     search: {
         provider: 'local'
-    },
-    
-    outline: {
-        level: [2, 3]  // Affiche les titres de niveau 2 et 3
     }
   },
   markdown: {

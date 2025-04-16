@@ -164,7 +164,6 @@ Par rapport à une machine virtuelle, un conteneur change la manière de faire�
 - là où les services (`http` par exemple) tournaient en arrière plan, ils restent en avant plan dans un conteneur;
 - les _logs_ quant-à eux sont simplement envoyés, tous, sur `stdout`. 
 
-
 ## Cas particulier des conteneurs LXC
 
 :::warning

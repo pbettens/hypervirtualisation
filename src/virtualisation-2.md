@@ -57,7 +57,7 @@ En console, l'ajout d'un nœud peut se faire par :
 ~:# pvecm add <IP ADDRESS CLUSTER> 
 ```
 
-:::note
+:::info
 Chaque hyperviseur peut gérer **toutes les machines virtuelles** du cluster et la section _summary_ affiche les ressources globales du cluster. 
 :::
 
@@ -67,7 +67,7 @@ En console, la liste des nœuds est donnée par `pvecm nodes`.
 Si un cluster a été créé par erreur ou si vous souhaitez le supprimer pour repartir de zéro, voici les étapes à suivre. Notez que cette opération est destructive et doit être effectuée avec précaution.
 
 1. **Vérifiez l'état du cluster**  
-    Avant de commencer, assurez-vous de vérifier l'état actuel du cluster pour identifier les nœuds qui y participent.  
+    Avant de commencer, assurez-vous de vérifier l'état actuel du cluster pour identifier les nœuds qui y participent. (Et profitez-en pour noter le nom des nœuds).  
     ```bash
     pvecm status
     ```
@@ -79,34 +79,30 @@ Si un cluster a été créé par erreur ou si vous souhaitez le supprimer pour r
     ```
     Remplacez `NODE_NAME` par le nom du nœud à supprimer. Répétez cette étape pour tous les nœuds sauf le dernier.
 
-3. **Quittez le cluster sur le dernier nœud**  
-    Une fois que tous les autres nœuds ont été supprimés, exécutez la commande suivante sur le dernier nœud pour quitter le cluster :  
-    ```bash
-    pvecm leave
-    ```
 
-4. **Supprimez les fichiers de configuration restants**  
-    Après avoir quitté le cluster, supprimez les fichiers de configuration liés au cluster pour éviter tout conflit futur :  
+
+3. **Supprimez le cluster sur le dernier nœud**  
+    Une fois que tous les autres nœuds ont été supprimés, exécutez les commandes suivantes sur le dernier nœud pour supprimer le cluster :  
     ```bash
+    systemctl stop pve-cluster
+    systemctl stop corosync
     rm -rf /etc/pve/corosync.conf
     rm -rf /etc/corosync/*
-    ```
-
-5. **Redémarrez les services Proxmox**  
-    Redémarrez les services Proxmox pour appliquer les changements :  
-    ```bash
-    systemctl restart pve-cluster
-    systemctl restart corosync
-    ```
-
-6. **Vérifiez que le cluster a été supprimé**  
-    Assurez-vous que le cluster n'existe plus en vérifiant l'absence de configuration de cluster :  
-    ```bash
-    pvecm status
+    systemctl start pve-cluster
+    systemctl start corosync
     ```
 
 :::danger 
 La suppression d'un cluster est irréversible. Assurez-vous d'avoir sauvegardé toutes les données importantes avant de procéder.
+:::
+
+:::danger 
+Lorsque la doc me dit d'exécuter `rm -rf <dir>`, je suis méfiant. 
+
+- Je relis
+- Je prends une copie des fichiers à supprimer
+- Je supprime
+- Si c'est cassé, je remets les fichiers et je relance les services. 
 :::
 
 [Suppression d'un nœud _via_ la commande `pcecm`](https://pve.proxmox.com/pve-docs/chapter-pvecm.html#_remove_a_cluster_node)

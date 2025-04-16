@@ -63,6 +63,52 @@ Chaque hyperviseur peut gérer **toutes les machines virtuelles** du cluster et 
 
 En console, la liste des nœuds est donnée par `pvecm nodes`. 
 
+
+Si un cluster a été créé par erreur ou si vous souhaitez le supprimer pour repartir de zéro, voici les étapes à suivre. Notez que cette opération est destructive et doit être effectuée avec précaution.
+
+1. **Vérifiez l'état du cluster**  
+    Avant de commencer, assurez-vous de vérifier l'état actuel du cluster pour identifier les nœuds qui y participent.  
+    ```bash
+    pvecm status
+    ```
+
+2. **Supprimez les nœuds du cluster**  
+    Pour chaque nœud du cluster, exécutez la commande suivante pour le retirer proprement :  
+    ```bash
+    pvecm delnode NODE_NAME
+    ```
+    Remplacez `NODE_NAME` par le nom du nœud à supprimer. Répétez cette étape pour tous les nœuds sauf le dernier.
+
+3. **Quittez le cluster sur le dernier nœud**  
+    Une fois que tous les autres nœuds ont été supprimés, exécutez la commande suivante sur le dernier nœud pour quitter le cluster :  
+    ```bash
+    pvecm leave
+    ```
+
+4. **Supprimez les fichiers de configuration restants**  
+    Après avoir quitté le cluster, supprimez les fichiers de configuration liés au cluster pour éviter tout conflit futur :  
+    ```bash
+    rm -rf /etc/pve/corosync.conf
+    rm -rf /etc/corosync/*
+    ```
+
+5. **Redémarrez les services Proxmox**  
+    Redémarrez les services Proxmox pour appliquer les changements :  
+    ```bash
+    systemctl restart pve-cluster
+    systemctl restart corosync
+    ```
+
+6. **Vérifiez que le cluster a été supprimé**  
+    Assurez-vous que le cluster n'existe plus en vérifiant l'absence de configuration de cluster :  
+    ```bash
+    pvecm status
+    ```
+
+:::danger 
+La suppression d'un cluster est irréversible. Assurez-vous d'avoir sauvegardé toutes les données importantes avant de procéder.
+:::
+
 [Suppression d'un nœud _via_ la commande `pcecm`](https://pve.proxmox.com/pve-docs/chapter-pvecm.html#_remove_a_cluster_node)
 
 ### Quorum
